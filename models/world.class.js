@@ -17,15 +17,25 @@ class World{
     ]
     canvas;
     ctx;
+    keyboard;
     //#endregion 
 
-    constructor(canvas){
+    constructor(canvas, keyboard){
         this.ctx = canvas.getContext("2d"); // Fläche des Spiels
         this.canvas = canvas;
+        this.keyboard = keyboard;
         this.draw(); // Zeichnung wird ausgeführt
+        this.setWorld();
     }
 
     //#region methods
+    // Übergabe der Variablen der World an die Klassen(hier MovableObjects) welche in SetWorld angegeben sind, um auf diese zugreifen zu können
+    // z.B. this.world.keyboard innerhalb der Klasse Character unter der Methode animate()
+    setWorld(){
+        this.character.world = this; // anstatt this.world.character.world.keyboard, muss nun this.world.keyboard innerhalb der Klasse Character 
+                                     //verwendet werden, um auf die Variablen zuzugreifen welche in der übergeordneten Klasse World definiert sind
+    }
+    
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Zeichnung wird gelöscht
 

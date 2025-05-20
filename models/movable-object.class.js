@@ -5,7 +5,9 @@ class MovableObject{
     img;
     height = 150;
     width = 100;
+    speed = 0.1;
     imageCache = {};
+    currentImage = 0;
     //#endregion
 
     //#region methods
@@ -14,8 +16,9 @@ class MovableObject{
         this.img.src = path;
     }
 
+    //animation von Objekten
     loadImages(arr){
-        arr.forEach((path) => { // für jedes Bild im array IMAGES_WALKING, wird diese Funktion einmal ausgeführt und bekommt die Bezeichnung path
+        arr.forEach((path) => { // für jedes Bild im array z.B. IMAGES_WALKING, wird diese Funktion einmal ausgeführt und bekommt die Bezeichnung path
             let img = new Image();
             img.src = path;
             this.imageCache[path] = img; // Bild wird in imageCache gespeichert 
@@ -28,7 +31,9 @@ class MovableObject{
     }
 
     moveLeft(){
-        
+        setInterval(() => {
+            this.x -= this.speed;
+        }, 1000/60);
     }
     //#endregion
 }
