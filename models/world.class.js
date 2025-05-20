@@ -1,5 +1,5 @@
 class World{
-    
+    //#region attributes
     character = new Character();
     enemies = [
         new Chicken(),
@@ -17,15 +17,17 @@ class World{
     ]
     canvas;
     ctx;
+    //#endregion 
 
     constructor(canvas){
-        this.ctx = canvas.getContext("2d");
+        this.ctx = canvas.getContext("2d"); // Fläche des Spiels
         this.canvas = canvas;
-        this.draw();
+        this.draw(); // Zeichnung wird ausgeführt
     }
 
+    //#region methods
     draw(){
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Zeichnung wird gelöscht
 
         this.addObjectsToMap(this.backroundObjects);
         this.addToMap(this.character);
@@ -45,4 +47,5 @@ class World{
     addToMap(object){
         this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
     }
+    //#endregion
 }
