@@ -54,8 +54,18 @@ class World{
         });
     }
 
-    addToMap(object){
-        this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
+    addToMap(mObject){
+        if (mObject.otherDirection) {
+            this.ctx.save();  // alle Eigenschaften des Context's werden gespeichert
+            this.ctx.translate(mObject.width, 0); // mObjekt wird um die Breite des jeweiligen mObjekts verschoben, da durch spiegeln verschoben 
+            this.ctx.scale(-1, 1); // das mObjekt wird um 180° gespiegelt
+            mObject.x = mObject.x * -1; // mObjekt wird auf der x-Achse gespiegelt
+        }
+        this.ctx.drawImage(mObject.img, mObject.x, mObject.y, mObject.width, mObject.height); // dem Canvas werden Bilder hinzugefügt
+        if (mObject.otherDirection) {
+            mObject.x = mObject.x * -1;
+            this.ctx.restore();
+        }
     }
     //#endregion
 }

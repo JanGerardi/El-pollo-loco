@@ -6,6 +6,7 @@ class MovableObject{
     height = 150;
     width = 100;
     speed = 0.1;
+    otherDirection = false;
     imageCache = {};
     currentImage = 0;
     //#endregion
