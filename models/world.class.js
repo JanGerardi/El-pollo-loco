@@ -18,6 +18,7 @@ class World{
     canvas;
     ctx;
     keyboard;
+    camera_x = 0;
     //#endregion 
 
     constructor(canvas, keyboard){
@@ -39,10 +40,14 @@ class World{
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Zeichnung wird gelöscht
 
+        this.ctx.translate(this.camera_x, 0); // Kamera bewegt sich auf der x-Achse nur mit der Bewegung des Character, da
+                                              //  wir in der Class Character in der Funktion animate auf camera_x zugreifen
         this.addObjectsToMap(this.backroundObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.enemies);
         this.addObjectsToMap(this.clouds);
+
+        this.ctx.translate(-this.camera_x, 0);
         
         // draw() wird immer wieder aufgerufen
         requestAnimationFrame(() => this.draw());
@@ -57,14 +62,14 @@ class World{
     addToMap(mObject){
         if (mObject.otherDirection) {
             this.ctx.save();  // alle Eigenschaften des Context's werden gespeichert
-            this.ctx.translate(mObject.width, 0); // mObjekt wird um die Breite des jeweiligen mObjekts verschoben, da durch spiegeln verschoben 
-            this.ctx.scale(-1, 1); // das mObjekt wird um 180° gespiegelt
-            mObject.x = mObject.x * -1; // mObjekt wird auf der x-Achse gespiegelt
+            this.ctx.translate(mObject.width, 0); // mObject wird um die Breite des jeweiligen mObjects verschoben, da durch spiegeln verschoben 
+            this.ctx.scale(-1, 1); // das mObject wird um 180° gespiegelt
+            mObject.x = mObject.x * -1; // mObject wird auf der x-Achse gespiegelt
         }
         this.ctx.drawImage(mObject.img, mObject.x, mObject.y, mObject.width, mObject.height); // dem Canvas werden Bilder hinzugefügt
         if (mObject.otherDirection) {
-            mObject.x = mObject.x * -1;
-            this.ctx.restore();
+            mObject.x = mObject.x * -1; // mObject wird wieder auf der x-Achse gespiegelt
+            this.ctx.restore(); // alle Eigenschaften des Context's werden wieder hergestellt da => otherDirection = flase
         }
     }
     //#endregion

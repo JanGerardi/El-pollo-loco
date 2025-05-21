@@ -1,6 +1,6 @@
 class MovableObject{
     //#region attributes
-    x = 120;
+    x = 0;
     y = 280;
     img;
     height = 150;
