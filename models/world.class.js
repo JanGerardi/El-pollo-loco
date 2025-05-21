@@ -1,20 +1,7 @@
 class World{
     //#region attributes
     character = new Character();
-    enemies = [
-        new Chicken(),
-        new Chicken(),
-        new Chicken()
-    ];
-    clouds = [
-        new Cloud()
-    ];
-    backroundObjects = [
-        new BackgroundObject("img/5_background/layers/air.png", 0),
-        new BackgroundObject("img/5_background/layers/3_third_layer/1.png", 0),
-        new BackgroundObject("img/5_background/layers/2_second_layer/1.png", 0),
-        new BackgroundObject("img/5_background/layers/1_first_layer/1.png", 0),
-    ]
+    level = level1;
     canvas;
     ctx;
     keyboard;
@@ -40,14 +27,14 @@ class World{
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Zeichnung wird gelöscht
 
-        this.ctx.translate(this.camera_x, 0); // Kamera bewegt sich auf der x-Achse nur mit der Bewegung des Character, da
+        this.ctx.translate(this.camera_x, 0); // Kamera bewegt sich innerhalb des Canvas auf der x-Achse nur mit der Bewegung des Character, da
                                               //  wir in der Class Character in der Funktion animate auf camera_x zugreifen
-        this.addObjectsToMap(this.backroundObjects);
+        this.addObjectsToMap(this.level.backgroundObjects);
         this.addToMap(this.character);
-        this.addObjectsToMap(this.enemies);
-        this.addObjectsToMap(this.clouds);
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.clouds);
 
-        this.ctx.translate(-this.camera_x, 0);
+        this.ctx.translate(-this.camera_x, 0); // hier wird das Canvas wieder auf die Ursprungsposition zurückgeschoben, damit die Zeichnungen nicht verschoben werden
         
         // draw() wird immer wieder aufgerufen
         requestAnimationFrame(() => this.draw());

@@ -26,6 +26,13 @@ class MovableObject{
         });
     }
 
+    playAnimation(images){
+        let i = this.currentImage % this.IMAGES_WALKING.length; // 0 % 6 => 0 Rest 0, / 7 % 6 => 2 Rest 1 ... der Rest ist i ,erhöht sich immer um 1
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
+
     moveRight(){
         console.log("moving right");
         

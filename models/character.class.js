@@ -3,7 +3,7 @@ class Character extends MovableObject{
     y = 180;
     height = 250;s
     width = 150;
-    speed = 3;
+    speed = 8;
     IMAGES_WALKING = [
             "img/2_character_pepe/2_walk/W-21.png",
             "img/2_character_pepe/2_walk/W-22.png",
@@ -25,24 +25,21 @@ class Character extends MovableObject{
     //#region methods
     animate(){
         setInterval(() =>{
-            if (this.world.keyboard.RIGHT) {
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.x += this.speed;
                 this.otherDirection = false;
             }
-            if (this.world.keyboard.LEFT) {
+            if (this.world.keyboard.LEFT && this.x > 0) {
                 this.x -= this.speed;
                 this.otherDirection = true;
             }
-            this.world.camera_x = -this.x;
+            this.world.camera_x = -this.x + 50; // hier wird die "Kamerabewegung", die auf die Bewegung des Characters reagiert, realisiert und um 100px nach rechts gesetzt
         }, 1000/60);
 
         setInterval(() => {
             if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 // Walk animation
-                let i = this.currentImage % this.IMAGES_WALKING.length; // 0 % 6 => 0 Rest 0, / 7 % 6 => 2 Rest 1 ... der Rest ist i ,erhöht sich immer um 1, maximal 6
-                let path = this.IMAGES_WALKING[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
+                this.playAnimation(this.IMAGES_WALKING);
             }
         }, 100);
     }
