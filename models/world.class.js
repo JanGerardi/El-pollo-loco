@@ -58,6 +58,6 @@ class World{
             mObject.x = mObject.x * -1; // mObject wird wieder auf der x-Achse gespiegelt
             this.ctx.restore(); // alle Eigenschaften des Context's werden wieder hergestellt da => otherDirection = flase
         }
-    }
-    //#endregion
+    }   
+//#endregion
 }

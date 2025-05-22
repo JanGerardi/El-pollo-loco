@@ -1,6 +1,6 @@
 class Character extends MovableObject{
     //#region attributes
-    y = 80;
+    y = 180;
     height = 250;s
     width = 150;
     speed = 8;
@@ -38,18 +38,20 @@ class Character extends MovableObject{
     animate(){
         setInterval(() =>{
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.x += this.speed;
-                this.otherDirection = false;
+                this.moveRight();
             }
             if (this.world.keyboard.LEFT && this.x > 0) {
                 this.x -= this.speed;
                 this.otherDirection = true;
+            }            
+            if (this.world.keyboard.UP && !this.isAboveGround()) {
+                this.jump();
             }
             this.world.camera_x = -this.x + 50; // hier wird die "Kamerabewegung", die auf die Bewegung des Characters reagiert, realisiert und um 100px nach rechts gesetzt
         }, 1000/60);
 
         setInterval(() => {
-            if (this.isAboveGround) {
+            if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
             } else {
 
@@ -59,10 +61,6 @@ class Character extends MovableObject{
                 }
             }
         }, 100);
-    }
-
-    jump(){
-
     }
     //#endregion
 }
