@@ -54,6 +54,13 @@ class World{
             mObject.x = mObject.x * -1; // mObject wird auf der x-Achse gespiegelt
         }
         this.ctx.drawImage(mObject.img, mObject.x, mObject.y, mObject.width, mObject.height); // dem Canvas werden Bilder hinzugefügt
+
+        this.ctx.beginPath();
+        this.ctx.lineWidth = "2";
+        this.ctx.strokeStyle = "blue";
+        this.ctx.rect(mObject.x, mObject.y, mObject.x + mObject.width, mObject.y + mObject.height);
+        this.ctx.stroke();
+
         if (mObject.otherDirection) {
             mObject.x = mObject.x * -1; // mObject wird wieder auf der x-Achse gespiegelt
             this.ctx.restore(); // alle Eigenschaften des Context's werden wieder hergestellt da => otherDirection = flase
