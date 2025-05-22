@@ -7,6 +7,8 @@ class MovableObject{
     width = 100;
     speed = 0.1;
     otherDirection = false;
+    speedY = 0;
+    acceleration = 2.5; // Fallbeschleunigung
     imageCache = {};
     currentImage = 0;
     //#endregion
@@ -33,6 +35,21 @@ class MovableObject{
         this.currentImage++;
     }
 
+    // Fall implementieren
+    applyGravity(){
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration; // Objekt wird entsprechend der acceleration und Wiederholungsrate der Methode, auf die y-Achse, welche in
+                                                  // der Funktion isAboveGround festgelegt wurde, gesetzt
+            }
+        }, 1000/25);
+    }
+
+    isAboveGround(){
+        this.y < 180; // y-Achse des Bodens 
+    }
+    
     moveRight(){
         console.log("moving right");
         
