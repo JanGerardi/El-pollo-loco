@@ -52,7 +52,7 @@ class Character extends MovableObject{
     
     //#region methods
     animate(){
-        setInterval(() =>{
+        setStoppableInterval(() =>{
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.otherDirection = false;
                 this.moveRight();
@@ -67,7 +67,7 @@ class Character extends MovableObject{
             this.world.camera_x = -this.x + 50; // hier wird die "Kamerabewegung", die auf die Bewegung des Characters reagiert, realisiert und um 100px nach rechts gesetzt
         }, 1000/60);
 
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
             } else if (this.isHurt()){

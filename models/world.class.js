@@ -6,6 +6,7 @@ class World{
     ctx;
     keyboard;
     camera_x = 0;
+    statusBar = new Statusbar();
     //#endregion 
 
     constructor(canvas, keyboard){
@@ -26,11 +27,11 @@ class World{
     }
     
     checkCollisions(){
-        setInterval(() => {
+        setStoppableInterval(() => {
             this.level.enemies.forEach((enemy) => {
                 if(this.character.isColliding(enemy) ){
                     this.character.hit();
-                    console.log("Collision with Character, health", this.character.health);
+                    this.statusBar.setPercentage(this.character.health)
                 }
             })
         }, 1000/25);
@@ -42,6 +43,11 @@ class World{
         this.ctx.translate(this.camera_x, 0); // Kamera bewegt sich innerhalb des Canvas auf der x-Achse nur mit der Bewegung des Character, da
                                               //  wir in der Class Character in der Funktion animate auf camera_x zugreifen
         this.addObjectsToMap(this.level.backgroundObjects);
+
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToMap(this.statusBar); // da camera_x translate für die Statusbar zurückgesetzt wird, bleibt es Sticky im Bild, auch wenn die Kamera sich bewegt
+        this.ctx.translate(this.camera_x, 0);
+
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.clouds);

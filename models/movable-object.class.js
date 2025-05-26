@@ -9,16 +9,6 @@ class MovableObject extends DrawableObject{
     //#endregion
 
     //#region methods
-    drawFrame(ctx){
-        if (this instanceof Character || this instanceof Chicken) { // nur der Klasse Character oder Chicken wird die Border hinzugefügt
-            ctx.beginPath(); // Beginn eines neuen Pfades (Zeichnung)
-            ctx.lineWidth = "2";
-            ctx.strokeStyle = "blue";
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke(); // Ausführung der Zeichnung, muss am Ende des Pfades stehen
-        }
-    }
-
     isColliding(mObject){
         return this.x < mObject.x + mObject.width && // Prüft, ob die linke Seite des ersten Objekts links von der rechten Seite des anderen Objekts ist
             this.x + this.width > mObject.x && // Prüft, ob die rechte Seite des ersten Objekts rechts von der linken Seite des anderen Objekts ist
@@ -54,7 +44,7 @@ class MovableObject extends DrawableObject{
 
     // Fall implementieren
     applyGravity(){
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration; // Objekt wird entsprechend der acceleration und Wiederholungsrate der Methode, auf die y-Achse, welche in

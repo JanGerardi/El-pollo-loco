@@ -19,6 +19,16 @@ class DrawableObject{
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
+    drawFrame(ctx){
+        if (this instanceof Character || this instanceof Chicken) { // nur der Klasse Character oder Chicken wird die Border hinzugefügt
+            ctx.beginPath(); // Beginn eines neuen Pfades (Zeichnung)
+            ctx.lineWidth = "2";
+            ctx.strokeStyle = "blue";
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke(); // Ausführung der Zeichnung, muss am Ende des Pfades stehen
+        }
+    }
+
     //animation von Objekten
     loadImages(arr){
         arr.forEach((path) => { // für jedes Bild im array z.B. IMAGES_WALKING, wird diese Funktion einmal ausgeführt und bekommt die Bezeichnung path

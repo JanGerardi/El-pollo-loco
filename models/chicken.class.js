@@ -22,11 +22,11 @@ class Chicken extends MovableObject{
     //#region methods
     animate(){
 
-        setInterval(() => {
+        setStoppableInterval(() => {
         this.playAnimation(this.IMAGES_WALKING);
         }, 1000/10);
 
-        setInterval(() => {
+        setStoppableInterval(() => {
             this.moveLeft();
         }, 1000/60);
     }
