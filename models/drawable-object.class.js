@@ -1,0 +1,31 @@
+class DrawableObject{
+    //#region attributes
+    x = 0;
+    y = 280;
+    img;
+    height = 150;
+    width = 100;
+    imageCache = {};
+    currentImage = 0;
+    //#endregion
+
+    //#region methods
+    loadImage(path){
+        this.img = new Image();
+        this.img.src = path;
+    }
+
+    draw(ctx){
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
+    //animation von Objekten
+    loadImages(arr){
+        arr.forEach((path) => { // für jedes Bild im array z.B. IMAGES_WALKING, wird diese Funktion einmal ausgeführt und bekommt die Bezeichnung path
+            let img = new Image();
+            img.src = path;
+            this.imageCache[path] = img; // Bild wird in imageCache gespeichert 
+        });
+    }
+    //#endregion
+}

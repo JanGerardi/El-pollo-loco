@@ -1,5 +1,5 @@
 class Endboss extends MovableObject{
-
+    //#region attributes
     height = 350;
     width = 300;
     y = 100;
@@ -14,6 +14,7 @@ class Endboss extends MovableObject{
         "img/4_enemie_boss_chicken/2_alert/G11.png",
         "img/4_enemie_boss_chicken/2_alert/G12.png",
     ];
+    //#endregion
 
     constructor(){
         super().loadImage(this.IMAGES_WALKING[0])
@@ -22,9 +23,11 @@ class Endboss extends MovableObject{
         this.animate();
     }
 
+    //#region methods
     animate(){
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);
         }, 1000/10);
     }
+    //#endregion
 }

@@ -30,7 +30,6 @@ class Chicken extends MovableObject{
             this.moveLeft();
         }, 1000/60);
     }
-
     //#endregion
 
 }
