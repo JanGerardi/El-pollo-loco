@@ -14,6 +14,7 @@ class World{
         this.keyboard = keyboard;
         this.draw(); // Zeichnung wird ausgeführt
         this.setWorld();
+        this.checkCollisions();
     }
 
     //#region methods
@@ -24,6 +25,17 @@ class World{
                                      //verwendet werden, um auf die Variablen zuzugreifen welche in der übergeordneten Klasse World definiert sind
     }
     
+    checkCollisions(){
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+                if(this.character.isColliding(enemy) ){
+                    this.character.hit();
+                    console.log("Collision with Character, health", this.character.health);
+                }
+            })
+        }, 1000/25);
+    }
+
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Zeichnung wird gelöscht
 
@@ -48,23 +60,26 @@ class World{
 
     addToMap(mObject){
         if (mObject.otherDirection) {
-            this.ctx.save();  // alle Eigenschaften des Context's werden gespeichert
-            this.ctx.translate(mObject.width, 0); // mObject wird um die Breite des jeweiligen mObjects verschoben, da durch spiegeln verschoben 
-            this.ctx.scale(-1, 1); // das mObject wird um 180° gespiegelt
-            mObject.x = mObject.x * -1; // mObject wird auf der x-Achse gespiegelt
+            this.flipImage(mObject);
         }
-        this.ctx.drawImage(mObject.img, mObject.x, mObject.y, mObject.width, mObject.height); // dem Canvas werden Bilder hinzugefügt
-
-        this.ctx.beginPath();
-        this.ctx.lineWidth = "2";
-        this.ctx.strokeStyle = "blue";
-        this.ctx.rect(mObject.x, mObject.y, mObject.x + mObject.width, mObject.y + mObject.height);
-        this.ctx.stroke();
+        mObject.draw(this.ctx); // dem Canvas werden Bilder hinzugefügt
+        mObject.drawFrame(this.ctx);
 
         if (mObject.otherDirection) {
-            mObject.x = mObject.x * -1; // mObject wird wieder auf der x-Achse gespiegelt
-            this.ctx.restore(); // alle Eigenschaften des Context's werden wieder hergestellt da => otherDirection = flase
+            this.flipImageBack(mObject);
         }
-    }   
+    }
+
+    flipImage(mObject){
+        this.ctx.save();  // alle Eigenschaften des Context's werden gespeichert
+        this.ctx.translate(mObject.width, 0); // mObject wird um die Breite des jeweiligen mObjects verschoben, da durch spiegeln verschoben 
+        this.ctx.scale(-1, 1); // das mObject wird um 180° gespiegelt
+        mObject.x = mObject.x * -1; // mObject wird auf der x-Achse gespiegelt
+    }
+
+    flipImageBack(mObject){
+        mObject.x = mObject.x * -1; // mObject wird wieder auf der x-Achse gespiegelt
+        this.ctx.restore(); // alle Eigenschaften des Context's werden wieder hergestellt da => otherDirection = flase
+    }
 //#endregion
 }
