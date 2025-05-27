@@ -27,6 +27,9 @@ window.addEventListener("keydown", (event) => {  //Keyboard-Event wird ermittelt
     if (event.keyCode == 32) {
         keyboard.SPACE = true;
     }
+    if (event.keyCode == 68) {
+        keyboard.D = true;
+    }
 });
 
 // Keyboard-Event Taste losgelassen
@@ -46,5 +49,8 @@ window.addEventListener("keyup", (event) => {  //Keyboard-Event wird ermittelt "
     }
     if (event.keyCode == 32) {
         keyboard.SPACE = false;
+    }
+    if (event.keyCode == 68) {
+        keyboard.D = false;
     }
 });

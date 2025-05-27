@@ -4,8 +4,6 @@ class Character extends MovableObject{
     height = 250;
     width = 150;
     speed = 8;
-    speedY = 0; // Geschwindigkeit von hoch und runter
-    acceleration = 2.5; // Beschleunigung von speedY
     IMAGES_WALKING = [
         "img/2_character_pepe/2_walk/W-21.png",
         "img/2_character_pepe/2_walk/W-22.png",
@@ -83,18 +81,5 @@ class Character extends MovableObject{
             }
         }
     };
-
-    // Fall implementieren
-    applyGravity = () => {
-        if (this.isAboveGround() || this.speedY > 0) {
-            this.y -= this.speedY;
-            this.speedY -= this.acceleration; // Objekt wird entsprechend der acceleration und Wiederholungsrate der Methode, auf die y-Achse, welche in
-                                                // der Funktion isAboveGround festgelegt wurde, wieder zurück gesetzt (Fall)
-        };
-    }
-
-    isAboveGround(){
-        return this.y < 180; // y-Achse des Bodens 
-    }
     //#endregion
 }

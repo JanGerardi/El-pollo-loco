@@ -7,6 +7,7 @@ class World{
     keyboard;
     camera_x = 0;
     statusBar = new Statusbar();
+    throwableObjects = [];
     //#endregion 
 
     constructor(canvas, keyboard){
@@ -15,7 +16,7 @@ class World{
         this.keyboard = keyboard;
         this.draw(); // Zeichnung wird ausgeführt
         this.setWorld();
-        IntervalHub.setStoppableInterval(this.checkCollisions, 1000/25);
+        IntervalHub.setStoppableInterval(this.run, 1000/25);
     }
 
     //#region methods
@@ -25,8 +26,20 @@ class World{
         this.character.world = this; // anstatt this.world.character.world.keyboard, muss nun this.world.keyboard innerhalb der Klasse Character 
                                      //verwendet werden, um auf die Variablen zuzugreifen welche in der übergeordneten Klasse World definiert sind
     }
+
+    run = () => {
+        this.checkCollisions();
+        this.checkThrowObject();
+    }
+
+    checkThrowObject(){
+        if (this.keyboard.D) {
+            const bottle = new ThrowableObject(this.character.x + 100, this.character.y +100);
+            this.throwableObjects.push(bottle);
+        }
+    }
     
-    checkCollisions = () => {
+    checkCollisions(){
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy) ){
                 this.character.hit();
@@ -49,6 +62,7 @@ class World{
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, 0); // hier wird das Canvas wieder auf die Ursprungsposition zurückgeschoben, damit die Zeichnungen nicht verschoben werden
         
