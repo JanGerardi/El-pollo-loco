@@ -15,7 +15,7 @@ class World{
         this.keyboard = keyboard;
         this.draw(); // Zeichnung wird ausgeführt
         this.setWorld();
-        this.checkCollisions();
+        IntervalHub.setStoppableInterval(this.checkCollisions, 1000/25);
     }
 
     //#region methods
@@ -26,16 +26,14 @@ class World{
                                      //verwendet werden, um auf die Variablen zuzugreifen welche in der übergeordneten Klasse World definiert sind
     }
     
-    checkCollisions(){
-        setStoppableInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if(this.character.isColliding(enemy) ){
-                    this.character.hit();
-                    this.statusBar.setPercentage(this.character.health)
-                }
-            })
-        }, 1000/25);
-    }
+    checkCollisions = () => {
+        this.level.enemies.forEach((enemy) => {
+            if(this.character.isColliding(enemy) ){
+                this.character.hit();
+                this.statusBar.setPercentage(this.character.health)
+            }
+        })
+    };
 
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Zeichnung wird gelöscht

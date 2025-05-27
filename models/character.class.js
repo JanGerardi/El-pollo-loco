@@ -1,9 +1,11 @@
 class Character extends MovableObject{
     //#region attributes
     y = 180;
-    height = 250;s
+    height = 250;
     width = 150;
     speed = 8;
+    speedY = 0; // Geschwindigkeit von hoch und runter
+    acceleration = 2.5; // Beschleunigung von speedY
     IMAGES_WALKING = [
         "img/2_character_pepe/2_walk/W-21.png",
         "img/2_character_pepe/2_walk/W-22.png",
@@ -46,41 +48,53 @@ class Character extends MovableObject{
         this.loadImages(this.IMAGES_JUMPING);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HURT);
-        this.applyGravity();
-        this.animate();
+        IntervalHub.setStoppableInterval(this.applyGravity, 1000/25);
+        IntervalHub.setStoppableInterval(this.animateMovement, 1000/60);
+        IntervalHub.setStoppableInterval(this.animateImages, 1000/10);
     }
     
     //#region methods
-    animate(){
-        setStoppableInterval(() =>{
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.otherDirection = false;
-                this.moveRight();
-            }
-            if (this.world.keyboard.LEFT && this.x > 0) {
-                this.otherDirection = true;
-                this.moveLeft();
-            }            
-            if (this.world.keyboard.SPACE && !this.isAboveGround()) {
-                this.jump();
-            }
-            this.world.camera_x = -this.x + 50; // hier wird die "Kamerabewegung", die auf die Bewegung des Characters reagiert, realisiert und um 100px nach rechts gesetzt
-        }, 1000/60);
+    animateMovement = () => {
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            this.otherDirection = false;
+            this.moveRight();
+        }
+        if (this.world.keyboard.LEFT && this.x > 0) {
+            this.otherDirection = true;
+            this.moveLeft();
+        }            
+        if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+            this.jump();        
+        }
+        this.world.camera_x = -this.x + 50; // hier wird die "Kamerabewegung", die auf die Bewegung des Characters reagiert, realisiert und um 100px nach rechts gesetzt
+    };
 
-        setStoppableInterval(() => {
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
-            } else if (this.isHurt()){
-                this.playAnimation(this.IMAGES_HURT);
-            } else if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMPING);
-            } else {
-                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                // Walk animation
-                this.playAnimation(this.IMAGES_WALKING);
-                }
+    animateImages = () => {
+        if (this.isDead()) {
+            this.playAnimation(this.IMAGES_DEAD);
+        } else if (this.isHurt()){
+            this.playAnimation(this.IMAGES_HURT);
+        } else if (this.isAboveGround()) {
+            this.playAnimation(this.IMAGES_JUMPING);
+        } else {
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+            // Walk animation
+            this.playAnimation(this.IMAGES_WALKING);
             }
-        }, 1000/10);
+        }
+    };
+
+    // Fall implementieren
+    applyGravity = () => {
+        if (this.isAboveGround() || this.speedY > 0) {
+            this.y -= this.speedY;
+            this.speedY -= this.acceleration; // Objekt wird entsprechend der acceleration und Wiederholungsrate der Methode, auf die y-Achse, welche in
+                                                // der Funktion isAboveGround festgelegt wurde, wieder zurück gesetzt (Fall)
+        };
+    }
+
+    isAboveGround(){
+        return this.y < 180; // y-Achse des Bodens 
     }
     //#endregion
 }

@@ -20,14 +20,12 @@ class Endboss extends MovableObject{
         super().loadImage(this.IMAGES_WALKING[0])
         this.loadImages(this.IMAGES_WALKING);
         this.x = 2550;
-        this.animate();
+        IntervalHub.setStoppableInterval(this.animateImages, 1000/5);
     }
 
     //#region methods
-    animate(){
-        setStoppableInterval(() => {
-            this.playAnimation(this.IMAGES_WALKING);
-        }, 1000/5);
-    }
+    animateImages= () => {
+        this.playAnimation(this.IMAGES_WALKING);
+    };
     //#endregion
 }

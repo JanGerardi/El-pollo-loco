@@ -16,20 +16,17 @@ class Chicken extends MovableObject{
 
         this.x = 200 + Math.random() * 500; // zwischen 200px und 700px;
         this.speed = 0.3 + Math.random() * 0.5;
-        this.animate();
+        IntervalHub.setStoppableInterval(this.animateMovement, 1000/60);
+        IntervalHub.setStoppableInterval(this.animateImages, 1000/10);
     }
 
     //#region methods
-    animate(){
-
-        setStoppableInterval(() => {
+    animateImages = () => {
         this.playAnimation(this.IMAGES_WALKING);
-        }, 1000/10);
+    };
 
-        setStoppableInterval(() => {
-            this.moveLeft();
-        }, 1000/60);
-    }
+    animateMovement = () => {
+        this.moveLeft();
+    };
     //#endregion
-
 }

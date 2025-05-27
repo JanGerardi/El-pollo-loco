@@ -2,8 +2,6 @@ class MovableObject extends DrawableObject{
     //#region attributes
     speed = 0.1;
     otherDirection = false;
-    speedY = 0; // Geschwindigkeit von hoch und runter
-    acceleration = 2.5; // Beschleunigung von speedY
     health = 100;
     lastHit = 0;
     //#endregion
@@ -40,21 +38,6 @@ class MovableObject extends DrawableObject{
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
-    }
-
-    // Fall implementieren
-    applyGravity(){
-        setStoppableInterval(() => {
-            if (this.isAboveGround() || this.speedY > 0) {
-                this.y -= this.speedY;
-                this.speedY -= this.acceleration; // Objekt wird entsprechend der acceleration und Wiederholungsrate der Methode, auf die y-Achse, welche in
-                                                  // der Funktion isAboveGround festgelegt wurde, wieder zurück gesetzt (Fall)
-            }
-        }, 1000/25);
-    }
-
-    isAboveGround(){
-        return this.y < 180; // y-Achse des Bodens 
     }
 
     moveRight(){
