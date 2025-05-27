@@ -2,21 +2,11 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-intervalIds = [];
 //#endregion
 
 function init(){
     canvas = document.getElementById("canvas");
     world  = new World(canvas, keyboard);
-}
-
-function setStoppableInterval(fn, time){
-    let id = setInterval(fn, time);
-    intervalIds.push(id);
-}
-
-function stopGame(){
-    intervalIds.forEach(clearInterval);
 }
 
 // Keyboard-Event Taste gedrückt
