@@ -1,6 +1,6 @@
 class Healthbar extends DrawableObject{
     //#region attributes
-    IMAGES_HEALTH = [
+    IMAGES_HEALTHBAR = [
         "img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png", // 0
         "img/7_statusbars/1_statusbar/2_statusbar_health/blue/20.png",
         "img/7_statusbars/1_statusbar/2_statusbar_health/blue/40.png",
@@ -13,7 +13,7 @@ class Healthbar extends DrawableObject{
 
     constructor(){
         super();
-        this.loadImages(this.IMAGES_HEALTH);
+        this.loadImages(this.IMAGES_HEALTHBAR);
         this.x = 40;
         this.y = 0;
         this.width = 200;
@@ -24,7 +24,7 @@ class Healthbar extends DrawableObject{
     //#region methods
     setPercentage(percentage){
         this.percentage = percentage; // index der IMAGES 0 bis 5 ermitteln, damit das richtige IMAGE (Lebensanzeige) angezeigt wird
-        let path = this.IMAGES_HEALTH[this.resolveImageIndex()];
+        let path = this.IMAGES_HEALTHBAR[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
