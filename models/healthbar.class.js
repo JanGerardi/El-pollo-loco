@@ -1,4 +1,4 @@
-class Statusbar extends DrawableObject{
+class Healthbar extends DrawableObject{
     //#region attributes
     IMAGES_HEALTH = [
         "img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png", // 0

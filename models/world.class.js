@@ -6,7 +6,7 @@ class World{
     ctx;
     keyboard;
     camera_x = 0;
-    statusBar = new Statusbar();
+    healthBar = new Healthbar();
     throwableObjects = [];
     //#endregion 
 
@@ -43,7 +43,7 @@ class World{
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy) ){
                 this.character.hit();
-                this.statusBar.setPercentage(this.character.health)
+                this.healthBar.setPercentage(this.character.health)
             }
         })
     };
@@ -56,7 +56,7 @@ class World{
         this.addObjectsToMap(this.level.backgroundObjects);
 
         this.ctx.translate(-this.camera_x, 0);
-        this.addToMap(this.statusBar); // da camera_x translate für die Statusbar zurückgesetzt wird, bleibt es Sticky im Bild, auch wenn die Kamera sich bewegt
+        this.addToMap(this.healthBar); // da camera_x translate für die Statusbar zurückgesetzt wird, bleibt es Sticky im Bild, auch wenn die Kamera sich bewegt
         this.ctx.translate(this.camera_x, 0);
 
         this.addToMap(this.character);
