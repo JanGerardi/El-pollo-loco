@@ -7,6 +7,7 @@ class World{
     keyboard;
     camera_x = 0;
     healthBar = new Healthbar();
+    coinBar = new Coinsbar();
     throwableObjects = [];
     //#endregion 
 
@@ -56,7 +57,8 @@ class World{
         this.addObjectsToMap(this.level.backgroundObjects);
 
         this.ctx.translate(-this.camera_x, 0);
-        this.addToMap(this.healthBar); // da camera_x translate für die Statusbar zurückgesetzt wird, bleibt es Sticky im Bild, auch wenn die Kamera sich bewegt
+        this.addToMap(this.healthBar);
+        this.addToMap(this.coinBar); // da camera_x translate für die Statusbar zurückgesetzt wird, bleibt es Sticky im Bild, auch wenn die Kamera sich bewegt
         this.ctx.translate(this.camera_x, 0);
 
         this.addToMap(this.character);
