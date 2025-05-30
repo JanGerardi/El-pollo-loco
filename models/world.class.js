@@ -65,9 +65,8 @@ class World{
         this.addObjectsToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, 0); // hier wird das Canvas wieder auf die Ursprungsposition zurückgeschoben, damit die Zeichnungen nicht verschoben werden
-        
-        // draw() wird immer wieder aufgerufen
-        requestAnimationFrame(() => this.draw());
+
+        requestAnimationFrame(() => this.draw()); // draw() wird immer wieder aufgerufen
     }
 
     addObjectsToMap(objectName){
