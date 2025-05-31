@@ -1,17 +1,15 @@
-class Coins extends DrawableObject{
+class Coin extends DrawableObject{
     //#region attributes
     IMAGES_COIN = [
         "img/8_coin/coin_1.png"        
     ];
+    y = 180;
+    width = 100;
+    height = 100;
     //#endregion
 
     constructor(){
-        super();
-        this.loadImage(this.IMAGES_COIN);
-        this.x = 20;
-        this.y = 80;
-        this.width = 180;
-        this.height = 45;
-        this.setPercentage(100);
+        super().loadImage(this.IMAGES_COIN);
+        this.x = 300 + Math.random() * 1800; // zwischen 200px und 700px;
     }
 }
