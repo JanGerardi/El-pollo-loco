@@ -56,6 +56,7 @@ class World{
         this.ctx.translate(this.camera_x, 0); // Kamera bewegt sich innerhalb des Canvas auf der x-Achse nur mit der Bewegung des Character, da
                                               //  wir in der Class Character in der Funktion animate auf camera_x zugreifen
         this.addObjectsToMap(this.level.backgroundObjects);
+        this.addObjectsToMap(this.level.clouds);
 
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
@@ -63,10 +64,9 @@ class World{
         this.addToMap(this.BottleBar);
         this.ctx.translate(this.camera_x, 0);
 
+        this.addObjectsToMap(this.level.collectibles);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.collectibles);
         this.addObjectsToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, 0); // hier wird das Canvas wieder auf die Ursprungsposition zurückgeschoben, damit die Zeichnungen nicht verschoben werden
