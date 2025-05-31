@@ -20,7 +20,8 @@ class DrawableObject{
     }
 
     drawFrame(ctx){
-        if (this instanceof Character || this instanceof Chicken) { // nur der Klasse Character oder Chicken wird die Border hinzugefügt
+        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof SmallChicken
+             || this instanceof Coin || this instanceof Bottle || this instanceof ThrowableObject) { // nur der Klasse Character oder Chicken wird die Border hinzugefügt
             ctx.beginPath(); // Beginn eines neuen Pfades (Zeichnung)
             ctx.lineWidth = "2";
             ctx.strokeStyle = "blue";
