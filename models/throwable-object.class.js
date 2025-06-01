@@ -17,7 +17,6 @@ class ThrowableObject extends MovableObject{
     height = 50;
     width = 50;
     hit = false;
-    bottleSplashImage = 0;
     //#endregion
 
     constructor(x, y){
@@ -44,7 +43,7 @@ class ThrowableObject extends MovableObject{
     }
 
     animateImages = () => {
-        if (this.hit == true) {
+        if (this.hit) {
             this.speedY = 0;
             this.acceleration = 0;
             this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
