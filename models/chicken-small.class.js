@@ -18,7 +18,7 @@ class SmallChicken extends MovableObject{
         super().loadImage("img/3_enemies_chicken/chicken_small/1_walk/1_w.png")
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_DEAD);
-        this.x = 300 + Math.random() * 1800; // zwischen 200px und 700px;
+        this.x = 600 + Math.random() * 1800; // zwischen 200px und 700px;
         this.speed = 1 + Math.random() * 1.2;
         IntervalHub.setStoppableInterval(this.animateMovement, 1000/60);
         IntervalHub.setStoppableInterval(this.animateImages, 1000/10);
