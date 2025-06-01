@@ -56,6 +56,14 @@ class World{
                 }
             });
         });
+        this.level.coins = this.level.coins.filter((coin) => {
+            if(this.character.isColliding(coin)){
+                this.coinBar.collect();
+                this.coinBar.setPercentage(this.coinBar.percentage);
+                return false;
+            }
+            return true;
+        });
     };
 
     draw(){
@@ -72,7 +80,8 @@ class World{
         this.addToMap(this.BottleBar);
         this.ctx.translate(this.camera_x, 0);
 
-        this.addObjectsToMap(this.level.collectibles);
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.bottles);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
