@@ -46,9 +46,16 @@ class World{
     
     checkCollisions(){
         this.level.enemies.forEach((enemy) => {
-            if(this.character.isColliding(enemy)){
-                this.character.hit();
-                this.healthBar.setPercentage(this.character.health)
+            if(this.character.isColliding(enemy) && !enemy.isDead()){
+                const characterIsFalling = this.character.speedY < 0;
+                const characterAboveEnemy = this.character.y + this.character.height <= enemy.y + enemy.height;
+                if (characterAboveEnemy && characterIsFalling) {
+                    enemy.hit();
+                    this.character.jump();
+                } else{
+                    this.character.hit();
+                    this.healthBar.setPercentage(this.character.health)
+                }
             }
         });
         this.thrownObjects.forEach((bottle) => {
