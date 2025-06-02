@@ -8,8 +8,9 @@ class World{
     camera_x = 0;
     healthBar = new Healthbar();
     coinBar = new Coinsbar();
-    BottleBar = new BottleBar();
+    bottleBar = new BottleBar();
     throwableObjects = [];
+    thrownObjects = [];
     //#endregion 
 
     constructor(canvas, keyboard){
@@ -35,9 +36,11 @@ class World{
     }
 
     checkThrowObject(){
-        if (this.keyboard.D) {
-            const bottle = new ThrowableObject(this.character.x + 100, this.character.y +100);
-            this.throwableObjects.push(bottle);
+        if (this.keyboard.D && this.throwableObjects.length > 0) {
+            const bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+            bottle.throw();
+            this.thrownObjects.push(bottle);
+            this.throwableObjects.shift();
         }
     }
     
@@ -48,7 +51,7 @@ class World{
                 this.healthBar.setPercentage(this.character.health)
             }
         });
-        this.throwableObjects.forEach((bottle) => {
+        this.thrownObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
                 if (bottle.isColliding(enemy)){
                     bottle.hit = true;
@@ -60,6 +63,15 @@ class World{
             if(this.character.isColliding(coin)){
                 this.coinBar.collect();
                 this.coinBar.setPercentage(this.coinBar.percentage);
+                return false;
+            }
+            return true;
+        });
+        this.level.bottles = this.level.bottles.filter((bottle) => {
+            if(this.character.isColliding(bottle)){
+                this.bottleBar.collect();
+                this.bottleBar.setPercentage(this.bottleBar.percentage);
+                this.throwableObjects.push(bottle);
                 return false;
             }
             return true;
@@ -77,14 +89,14 @@ class World{
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
         this.addToMap(this.coinBar); // da camera_x translate für die Statusbar zurückgesetzt wird, bleibt es Sticky im Bild, auch wenn die Kamera sich bewegt
-        this.addToMap(this.BottleBar);
+        this.addToMap(this.bottleBar);
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.bottles);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.throwableObjects);
+        this.addObjectsToMap(this.thrownObjects);
 
         this.ctx.translate(-this.camera_x, 0); // hier wird das Canvas wieder auf die Ursprungsposition zurückgeschoben, damit die Zeichnungen nicht verschoben werden
 

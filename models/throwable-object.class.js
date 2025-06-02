@@ -25,7 +25,6 @@ class ThrowableObject extends MovableObject{
         this.loadImages(this.IMAGES_BOTTLE_SPLASH);
         this.x = x;
         this.y = y;
-        this.throw();
         IntervalHub.setStoppableInterval(this.animateImages, 1000/10);
     }
 
