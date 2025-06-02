@@ -33,6 +33,11 @@ class World{
     run = () => {
         this.checkCollisions();
         this.checkThrowObject();
+        this.removeUsedBottles();
+    }
+
+    removeUsedBottles(){
+        this.thrownObjects = this.thrownObjects.filter(bottle => !bottle.removeFromWorld);
     }
 
     checkThrowObject(){
@@ -60,8 +65,11 @@ class World{
         });
         this.thrownObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
-                if (bottle.isColliding(enemy)){
-                    bottle.hit = true;
+                if (bottle.isColliding(enemy) && !enemy.isDead()){
+                    if (!bottle.hit) {
+                        bottle.hit = true;
+                        bottle.currentImage = 0;
+                    }
                     enemy.hit();
                 }
             });

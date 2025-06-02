@@ -17,6 +17,7 @@ class ThrowableObject extends MovableObject{
     height = 50;
     width = 50;
     hit = false;
+    removeFromWorld = false;
     //#endregion
 
     constructor(x, y){
@@ -45,9 +46,19 @@ class ThrowableObject extends MovableObject{
         if (this.hit) {
             this.speedY = 0;
             this.acceleration = 0;
-            this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
+            this.playSplashAnimation();
         } else{
             this.playAnimation(this.IMAGES_BOTTLE_SPINNIG);
+        }
+    }
+
+    playSplashAnimation() {
+        if (this.currentImage < this.IMAGES_BOTTLE_SPLASH.length) {
+            const path = this.IMAGES_BOTTLE_SPLASH[this.currentImage];
+            this.img = this.imageCache[path];
+            this.currentImage++;
+        }else {
+            this.removeFromWorld = true; // Bottle entfernen
         }
     }
     //#endregion
