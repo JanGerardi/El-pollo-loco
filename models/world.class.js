@@ -48,6 +48,7 @@ class World{
     endbossTriggered(){
         if (this.character.x >= 2100) {
         this.level.endboss[0].triggered = true;
+        this.healthBarEndboss.showHealthbar();
         }
     }
 

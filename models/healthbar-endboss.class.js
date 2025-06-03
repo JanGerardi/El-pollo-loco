@@ -9,15 +9,15 @@ class HealthbarEndboss extends DrawableObject{
         "img/7_statusbars/2_statusbar_endboss/blue/blue100.png"
     ];
     percentage = 100;
+    x = 470;
+    y = 5;
+    width = 0;
+    height = 0;
     //#endregion
 
     constructor(){
         super();
         this.loadImages(this.IMAGES_HEALTHBAR_ENDBOSS);
-        this.x = 470;
-        this.y = 5;
-        this.width = 230;
-        this.height = 70;
         this.setPercentage(100);
     }
 
@@ -43,6 +43,11 @@ class HealthbarEndboss extends DrawableObject{
         } else {
             return 0;
         }
+    }
+
+    showHealthbar(){
+        this.width = 230;
+        this.height = 70;
     }
     //#endregion
 }
