@@ -5,7 +5,7 @@ class MovableObject extends DrawableObject{
     health = 100;
     lastHit = 0;
     speedY = 0; // Geschwindigkeit von hoch und runter
-    acceleration = 2.5; // Beschleunigung von speedY
+    acceleration = 3; // Beschleunigung von speedY
     //#endregion
 
     //#region methods
@@ -58,6 +58,8 @@ class MovableObject extends DrawableObject{
             this.speedY -= this.acceleration; // Objekt wird entsprechend der acceleration und Wiederholungsrate der Methode, auf die y-Achse, welche in
                                                 // der Funktion isAboveGround festgelegt wurde, wieder zurück gesetzt (Fall)
         };
+
+        this.stayOnGround();
     }
 
     isAboveGround(){
@@ -67,6 +69,13 @@ class MovableObject extends DrawableObject{
             return this.y < 180; // y-Achse des Bodens 
         }
     }
+
+    stayOnGround() {
+    if (this.y > 180) {
+        this.y = 180;
+        this.speedY = 0;
+    }
+}
 
     moveRight(){
         this.x += this.speed;

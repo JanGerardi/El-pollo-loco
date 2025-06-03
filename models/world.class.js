@@ -72,7 +72,6 @@ class World{
                 if (characterAboveEnemy && characterIsFalling) {
                     enemy.hit();
                     this.character.jump();
-                    this.character.y = 180;
                 } else{
                     this.character.hit();
                     this.healthBar.setPercentage(this.character.health)
