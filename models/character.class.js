@@ -37,7 +37,7 @@ class Character extends MovableObject{
         "img/2_character_pepe/4_hurt/H-42.png",
         "img/2_character_pepe/4_hurt/H-43.png"
     ];
-    world;
+    world; // zuordnung der wolrd, damit Character bezug auf world hat und unter anderem die Camera nun dem Character folgt
     //#endregion
 
     constructor(){
@@ -64,7 +64,7 @@ class Character extends MovableObject{
         if (this.world.keyboard.SPACE && !this.isAboveGround()) {
             this.jump();        
         }
-        this.world.camera_x = -this.x + 50; // hier wird die "Kamerabewegung", die auf die Bewegung des Characters reagiert, realisiert und um 100px nach rechts gesetzt
+        this.world.camera_x = -this.x + 50; // hier wird die "Kamerabewegung", die auf die Bewegung des Characters reagiert, realisiert und um 50px nach rechts gesetzt
     };
 
     animateImages = () => {

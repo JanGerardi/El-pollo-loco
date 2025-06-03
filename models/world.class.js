@@ -9,6 +9,7 @@ class World{
     healthBar = new Healthbar();
     coinBar = new Coinsbar();
     bottleBar = new BottleBar();
+    healthBarEndboss = new HealthbarEndboss();
     throwableObjects = [];
     thrownObjects = [];
     //#endregion 
@@ -37,7 +38,7 @@ class World{
     }
 
     removeUsedBottles(){
-        this.thrownObjects = this.thrownObjects.filter(bottle => !bottle.removeFromWorld);
+        this.thrownObjects = this.thrownObjects.filter(bottle => !bottle.removeFromWorld); // bottle, welche gesplasht ist, wird entfernt
     }
 
     checkThrowObject(){
@@ -57,6 +58,7 @@ class World{
                 if (characterAboveEnemy && characterIsFalling) {
                     enemy.hit();
                     this.character.jump();
+                    this.character.y = 180;
                 } else{
                     this.character.hit();
                     this.healthBar.setPercentage(this.character.health)
@@ -68,7 +70,7 @@ class World{
                 if (bottle.isColliding(enemy) && !enemy.isDead()){
                     if (!bottle.hit) {
                         bottle.hit = true;
-                        bottle.currentImage = 0;
+                        bottle.currentImage = 0; // splashImageIndex auf 0 setzen, damit die animation immer von Anfang abgespeilt wird
                     }
                     enemy.hit();
                 }
@@ -91,6 +93,18 @@ class World{
             }
             return true;
         });
+        this.thrownObjects.forEach((bottle) => {
+            this.level.endboss.forEach((boss) => {
+                if (bottle.isColliding(boss) && !boss.isDead()) {
+                    if (!bottle.hit) {
+                        bottle.hit = true;
+                        bottle.currentImage = 0; // splashImageIndex auf 0 setzen, damit die animation immer von Anfang abgespeilt wird
+                    }
+                    boss.hit();
+                    this.healthBarEndboss.setPercentage(boss.health);
+                }
+            });
+        });
     };
 
     draw(){
@@ -105,12 +119,14 @@ class World{
         this.addToMap(this.healthBar);
         this.addToMap(this.coinBar); // da camera_x translate für die Statusbar zurückgesetzt wird, bleibt es Sticky im Bild, auch wenn die Kamera sich bewegt
         this.addToMap(this.bottleBar);
+        this.addToMap(this.healthBarEndboss);
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.bottles);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.endboss)
         this.addObjectsToMap(this.thrownObjects);
 
         this.ctx.translate(-this.camera_x, 0); // hier wird das Canvas wieder auf die Ursprungsposition zurückgeschoben, damit die Zeichnungen nicht verschoben werden
