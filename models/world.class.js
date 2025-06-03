@@ -35,6 +35,20 @@ class World{
         this.checkCollisions();
         this.checkThrowObject();
         this.removeUsedBottles();
+        this.endbossTriggered();
+        this.endbossReachedCharacter();
+    }
+
+    endbossReachedCharacter(){
+        if (this.character.x == this.level.endboss.x) {
+            this.level.endboss[0].isAttacking = true;
+        }
+    }
+
+    endbossTriggered(){
+        if (this.character.x >= 2100) {
+        this.level.endboss[0].triggered = true;
+        }
     }
 
     removeUsedBottles(){
@@ -92,6 +106,13 @@ class World{
                 return false;
             }
             return true;
+        });
+        this.level.endboss.forEach((boss) => {
+            if(this.character.isColliding(boss) && !boss.isDead()){
+                    this.character.hitByEndboss();
+                    this.healthBar.setPercentage(this.character.health);
+                    boss.isAttacking = true;
+            }
         });
         this.thrownObjects.forEach((bottle) => {
             this.level.endboss.forEach((boss) => {

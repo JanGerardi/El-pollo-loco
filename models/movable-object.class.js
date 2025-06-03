@@ -25,6 +25,15 @@ class MovableObject extends DrawableObject{
         }
     }
 
+    hitByEndboss(){
+        this.health -= 1;
+        if (this.health < 0) {
+            this.health = 0;
+        } else {
+            this.lastHit = new Date().getTime(); // es wird der Zeitpunkt in ms gespeichert, an dem der letzte hit entstanden ist (Zeitrechnung ab 1.1.1970)
+        }
+    }
+
     isHurt(){
         let timepassed = new Date().getTime() - this.lastHit; // Differenz zwischen dem letzten hit und der aktuellen Zeit
         timepassed = timepassed / 1000; // Differenz wird nun in sekunden umgewandelt
