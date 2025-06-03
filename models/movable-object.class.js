@@ -26,7 +26,7 @@ class MovableObject extends DrawableObject{
     }
 
     hitByEndboss(){
-        this.health -= 1;
+        this.health -= 7;
         if (this.health < 0) {
             this.health = 0;
         } else {
@@ -49,6 +49,18 @@ class MovableObject extends DrawableObject{
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+
+        if (images === this.IMAGES_IDLE) {
+            if (i === images.length - 1) {
+                this.idleImageCycle++;
+                if (this.idleImageCycle >= 4) {
+                    this.sleeping = true;
+                }
+            }
+        } else if(images !== this.IMAGES_LONG_IDLE) {
+            this.idleImageCycle = 0;
+            this.sleeping = false;
+        }
     }
 
     // Fall implementieren

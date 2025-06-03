@@ -2,6 +2,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let dWasReleased = true;
 //#endregion
 
 function init(){
@@ -21,14 +22,12 @@ window.addEventListener("keydown", (event) => {  //Keyboard-Event wird ermittelt
     if (event.keyCode == 38) {
         keyboard.UP = true;
     }
-    if (event.keyCode == 40) {
-        keyboard.DOWN = true;
-    }
     if (event.keyCode == 32) {
         keyboard.SPACE = true;
     }
     if (event.keyCode == 68) {
         keyboard.D = true;
+        dWasReleased = false;
     }
 });
 
@@ -44,13 +43,11 @@ window.addEventListener("keyup", (event) => {  //Keyboard-Event wird ermittelt "
     if (event.keyCode == 38) {
         keyboard.UP = false;
     }
-    if (event.keyCode == 40) {
-        keyboard.DOWN = false;
-    }
     if (event.keyCode == 32) {
         keyboard.SPACE = false;
     }
     if (event.keyCode == 68) {
+        dWasReleased = true;
         keyboard.D = false;
     }
 });

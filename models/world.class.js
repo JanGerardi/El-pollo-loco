@@ -46,7 +46,7 @@ class World{
     }
 
     endbossTriggered(){
-        if (this.character.x >= 2100) {
+        if (this.character.x >= 2000) {
         this.level.endboss[0].triggered = true;
         this.healthBarEndboss.showHealthbar();
         }
@@ -57,11 +57,15 @@ class World{
     }
 
     checkThrowObject(){
+        if (this.character.isDead()) {
+            return;
+        }
         if (this.keyboard.D && this.throwableObjects.length > 0) {
             const bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             bottle.throw();
             this.thrownObjects.push(bottle);
             this.throwableObjects.shift();
+            this.keyboard.D = false;
         }
     }
     
