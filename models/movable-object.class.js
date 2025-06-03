@@ -58,7 +58,6 @@ class MovableObject extends DrawableObject{
             this.speedY -= this.acceleration; // Objekt wird entsprechend der acceleration und Wiederholungsrate der Methode, auf die y-Achse, welche in
                                                 // der Funktion isAboveGround festgelegt wurde, wieder zurück gesetzt (Fall)
         };
-
         this.stayOnGround();
     }
 

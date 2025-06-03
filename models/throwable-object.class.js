@@ -32,13 +32,16 @@ class ThrowableObject extends MovableObject{
     //#region methods
     throw(){
         this.speedY = 30;
-        IntervalHub.setStoppableInterval(this.applyGravity, 1000/25);
         IntervalHub.setStoppableInterval(this.applyGravityToBottle, 1000/25);
     }
 
     applyGravityToBottle = () => {
         if (!this.hit) {
             this.x += 10;
+        }
+        if (this.isAboveGround() || this.speedY > 0) {
+            this.y -= this.speedY;
+            this.speedY -= this.acceleration;
         }
     }
 
