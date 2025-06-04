@@ -3,7 +3,15 @@ class ImgHub{
 }
 
 class SoundHub{
-    static characterWalking = new Audio("audio/character_walking.wav");
+    static characterWalkingRight = new Audio("audio/character_walking.wav");
+    static characterWalkingLeft = new Audio("audio/character_walking.wav");
+    static characterJumping = new Audio("audio/character_jumping.wav");
+    static throwingBottle = new Audio("audio/bottle_throwing.mp3");
+    static bottleSplashed = new Audio("audio/bottle_splashed.mp3");
+    static pepeHurt = new Audio("audio/pepe_hurt.mp3");
+    static pepeDead = new Audio("audio/pepe_dead.mp3");
+    static coinCollected = new Audio("audio/coin_collected.mp3");
+    static bottleCollected = new Audio("audio/bottle_collected.mp3");
 
     static allSounds = [SoundHub.characterWalking,]
 

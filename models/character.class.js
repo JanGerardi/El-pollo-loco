@@ -84,25 +84,44 @@ class Character extends MovableObject{
     //#region methods
     animateMovement = () => {
         if (this.isDead()) {
+            SoundHub.stopSound(SoundHub.pepeHurt);
+            if (SoundHub.pepeDead.paused) {
+                SoundHub.playSound(SoundHub.pepeDead);
+            }
             return;
         }
         if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
             this.otherDirection = false;
             this.moveRight();
-            SoundHub.characterWalking.playbackRate = 2.0;  // doppelte Sound-Geschwindigkeit
-            if (SoundHub.characterWalking.paused) {
-                SoundHub.playSound(SoundHub.characterWalking);
+            SoundHub.characterWalkingRight.playbackRate = 2.0;  // doppelte Sound-Geschwindigkeit
+            if (!this.isAboveGround()) {
+                if (SoundHub.characterWalkingRight.paused) {
+                    SoundHub.playSound(SoundHub.characterWalkingRight);
+                }
+            } else {
+                SoundHub.stopSound(SoundHub.characterWalkingRight);
             }
         } else {
-            SoundHub.stopSound(SoundHub.characterWalking);
+            SoundHub.stopSound(SoundHub.characterWalkingRight);
         }
         if (this.world.keyboard.LEFT && this.x > 0) {
             this.otherDirection = true;
             this.moveLeft();
-        }            
+            SoundHub.characterWalkingLeft.playbackRate = 2.0;
+            if (!this.isAboveGround()) {
+                if (SoundHub.characterWalkingLeft.paused) {
+                    SoundHub.playSound(SoundHub.characterWalkingLeft);
+                }
+            } else {
+                SoundHub.stopSound(SoundHub.characterWalkingLeft);
+            }
+        } else {
+            SoundHub.stopSound(SoundHub.characterWalkingLeft);
+        }          
         if (this.world.keyboard.SPACE && !this.isAboveGround()) {
             this.jump();
-        }
+            SoundHub.playSound(SoundHub.characterJumping);
+            }
         this.world.camera_x = -this.x + 50; // hier wird die "Kamerabewegung", die auf die Bewegung des Characters reagiert, realisiert und um 50px nach rechts gesetzt
     };
 

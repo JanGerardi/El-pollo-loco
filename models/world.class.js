@@ -63,6 +63,7 @@ class World{
         if (this.keyboard.D && this.throwableObjects.length > 0) {
             const bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             bottle.throw();
+            SoundHub.playSound(SoundHub.throwingBottle);
             this.thrownObjects.push(bottle);
             this.throwableObjects.shift();
             this.keyboard.D = false;
@@ -77,9 +78,13 @@ class World{
                 if (characterAboveEnemy && characterIsFalling) {
                     enemy.hit();
                     this.character.jump();
+                    SoundHub.playSound(SoundHub.characterJumping);
                 } else{
                     this.character.hit();
-                    this.healthBar.setPercentage(this.character.health)
+                    this.healthBar.setPercentage(this.character.health);
+                    if (SoundHub.pepeHurt.paused && !this.character.isDead()) {
+                        SoundHub.playSound(SoundHub.pepeHurt);
+                    }
                 }
             }
         });
@@ -89,6 +94,7 @@ class World{
                     if (!bottle.hit) {
                         bottle.hit = true;
                         bottle.currentImage = 0; // splashImageIndex auf 0 setzen, damit die animation immer von Anfang abgespeilt wird
+                        SoundHub.playSound(SoundHub.bottleSplashed);
                     }
                     enemy.hit();
                 }
@@ -97,6 +103,7 @@ class World{
         this.level.coins = this.level.coins.filter((coin) => {
             if(this.character.isColliding(coin)){
                 this.coinBar.collect();
+                SoundHub.playSound(SoundHub.coinCollected);
                 this.coinBar.setPercentage(this.coinBar.percentage);
                 return false;
             }
@@ -105,6 +112,7 @@ class World{
         this.level.bottles = this.level.bottles.filter((bottle) => {
             if(this.character.isColliding(bottle)){
                 this.bottleBar.collect();
+                SoundHub.playSound(SoundHub.bottleCollected);
                 this.bottleBar.setPercentage(this.bottleBar.percentage);
                 this.throwableObjects.push(bottle);
                 return false;
@@ -116,6 +124,9 @@ class World{
                     this.character.hitByEndboss();
                     this.healthBar.setPercentage(this.character.health);
                     boss.isAttacking = true;
+                    if (SoundHub.pepeHurt.paused && !this.character.isDead()) {
+                        SoundHub.playSound(SoundHub.pepeHurt);
+                    }
             }
         });
         this.thrownObjects.forEach((bottle) => {
@@ -124,6 +135,7 @@ class World{
                     if (!bottle.hit) {
                         bottle.hit = true;
                         bottle.currentImage = 0; // splashImageIndex auf 0 setzen, damit die animation immer von Anfang abgespeilt wird
+                        SoundHub.playSound(SoundHub.bottleSplashed);
                     }
                     boss.hit();
                     this.healthBarEndboss.setPercentage(boss.health);
