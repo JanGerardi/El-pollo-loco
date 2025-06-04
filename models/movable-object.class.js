@@ -5,7 +5,7 @@ class MovableObject extends DrawableObject{
     health = 100;
     lastHit = 0;
     speedY = 0; // Geschwindigkeit von hoch und runter
-    acceleration = 3; // Beschleunigung von speedY
+    acceleration = 3; // in welchen Schritten der Wert SpeedY in applyGravity() abgeändert wird 
     //#endregion
 
     //#region methods

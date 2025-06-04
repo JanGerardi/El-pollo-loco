@@ -1,15 +1,12 @@
 class Bottle extends DrawableObject{
     //#region attributes
-    IMAGES_BOTTLE = [
-        "img/6_salsa_bottle/1_salsa_bottle_on_ground.png"        
-    ];
     y = 355;
     width = 70;
     height = 70;
     //#endregion
 
-    constructor(){
-        super().loadImage(this.IMAGES_BOTTLE);
-        this.x = 300 + Math.random() * 1800; // zwischen 200px und 700px;
+    constructor(imagePath, x){
+        super().loadImage(imagePath);
+        this.x = x
     }
 }
