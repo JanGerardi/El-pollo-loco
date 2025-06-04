@@ -1,10 +1,6 @@
 class DrawableObject{
     //#region attributes
-    x = 0;
-    y = 280;
     img;
-    height = 150;
-    width = 100;
     imageCache = {};
     currentImage = 0;
     //#endregion
@@ -21,7 +17,7 @@ class DrawableObject{
 
     drawFrame(ctx){
         if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof SmallChicken
-             || this instanceof Coin || this instanceof Bottle || this instanceof ThrowableObject) { // nur der Klasse Character oder Chicken wird die Border hinzugefügt
+             || this instanceof Coin || this instanceof Bottle || this instanceof ThrowableObject) { // nur diesen Klassen wird die Border hinzugefügt
             ctx.beginPath(); // Beginn eines neuen Pfades (Zeichnung)
             ctx.lineWidth = "2";
             ctx.strokeStyle = "blue";

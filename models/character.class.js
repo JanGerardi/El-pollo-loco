@@ -1,9 +1,11 @@
 class Character extends MovableObject{
     //#region attributes
+    x = 0;
     y = 180;
     height = 250;
     width = 150;
     speed = 8;
+    health = 100;
     sleeping = false;
     idleImageCycle = 0;
     IMAGES_WALKING = [
@@ -87,6 +89,12 @@ class Character extends MovableObject{
         if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
             this.otherDirection = false;
             this.moveRight();
+            SoundHub.characterWalking.playbackRate = 2.0;  // doppelte Sound-Geschwindigkeit
+            if (SoundHub.characterWalking.paused) {
+                SoundHub.playSound(SoundHub.characterWalking);
+            }
+        } else {
+            SoundHub.stopSound(SoundHub.characterWalking);
         }
         if (this.world.keyboard.LEFT && this.x > 0) {
             this.otherDirection = true;
