@@ -1,5 +1,9 @@
 class Coinsbar extends DrawableObject{
     //#region attributes
+    x = 20;
+    y = 40;
+    width = 180;
+    height = 45;
     IMAGES_COINSBAR = [
         "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/0.png",
         "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/20.png",
@@ -14,10 +18,6 @@ class Coinsbar extends DrawableObject{
     constructor(){
         super();
         this.loadImages(this.IMAGES_COINSBAR);
-        this.x = 20;
-        this.y = 40;
-        this.width = 180;
-        this.height = 45;
         this.setPercentage(0);
     }
 

@@ -1,5 +1,6 @@
 class SmallChicken extends MovableObject{
     //#region attributes
+    x;
     y = 375;
     height = 50;
     width = 50;

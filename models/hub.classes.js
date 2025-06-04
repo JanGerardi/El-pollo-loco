@@ -16,8 +16,12 @@ class SoundHub{
     static chickenDead = new Audio("audio/chicken_dead.mp3");
     static endbossWalking = new Audio("audio/endboss_walking.mp3");
     static endbossAggro = new Audio("audio/endboss_aggro.mp3");
+    static endbossHurt = new Audio("audio/endboss_hurt.mp3");
 
-    static allSounds = [SoundHub.characterWalking,]
+    static allSounds = [SoundHub.characterWalkingRight, SoundHub.characterWalkingLeft, SoundHub.characterJumping, SoundHub.throwingBottle, SoundHub.bottleSplashed,
+        SoundHub.pepeHurt, SoundHub.pepeDead, SoundHub.coinCollected, SoundHub.bottleCollected, SoundHub.pepeSleeping, SoundHub.chickenDead, SoundHub.endbossWalking,
+        SoundHub.endbossAggro, SoundHub.endbossHurt
+    ]
 
     static playSound(sound){
         sound.volume = 0.2; // Setzt die Lautstärke auf 0.2 = 20% / 1 = 100%
@@ -27,6 +31,13 @@ class SoundHub{
 
     static stopSound(sound){
         sound.pause();  // Pausiert den Sound
+    }
+
+    static stopAllSounds() {
+        SoundHub.allSounds.forEach(sound => {
+            sound.pause();  // Pausiert alle Sounds in allSounds
+        });
+        document.getElementById('volume').value = 0.2;
     }
 }
 

@@ -1,5 +1,9 @@
 class Healthbar extends DrawableObject{
     //#region attributes
+    x = 20;
+    y = 0;
+    width = 180;
+    height = 45;
     IMAGES_HEALTHBAR = [
         "img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png", // 0
         "img/7_statusbars/1_statusbar/2_statusbar_health/blue/20.png",
@@ -14,10 +18,6 @@ class Healthbar extends DrawableObject{
     constructor(){
         super();
         this.loadImages(this.IMAGES_HEALTHBAR);
-        this.x = 20;
-        this.y = 0;
-        this.width = 180;
-        this.height = 45;
         this.setPercentage(100);
     }
 

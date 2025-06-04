@@ -1,5 +1,6 @@
 class Bottle extends DrawableObject{
     //#region attributes
+    x;
     y = 355;
     width = 70;
     height = 70;

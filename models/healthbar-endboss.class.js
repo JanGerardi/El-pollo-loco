@@ -1,5 +1,9 @@
 class HealthbarEndboss extends DrawableObject{
     //#region attributes
+    x = 470;
+    y = 5;
+    width = 0;
+    height = 0;
     IMAGES_HEALTHBAR_ENDBOSS = [
         "img/7_statusbars/2_statusbar_endboss/blue/blue0.png",
         "img/7_statusbars/2_statusbar_endboss/blue/blue20.png",
@@ -9,10 +13,6 @@ class HealthbarEndboss extends DrawableObject{
         "img/7_statusbars/2_statusbar_endboss/blue/blue100.png"
     ];
     percentage = 100;
-    x = 470;
-    y = 5;
-    width = 0;
-    height = 0;
     //#endregion
 
     constructor(){

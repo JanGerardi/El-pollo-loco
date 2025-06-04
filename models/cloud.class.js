@@ -1,5 +1,6 @@
 class Cloud extends MovableObject{
     //#region attributes
+    x;
     y = 20;
     width = 500;
     height = 250;

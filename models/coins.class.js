@@ -1,5 +1,6 @@
 class Coin extends DrawableObject{
     //#region attributes
+    x;
     y = 170;
     width = 100;
     height = 100;

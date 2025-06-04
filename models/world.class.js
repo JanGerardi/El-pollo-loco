@@ -138,6 +138,7 @@ class World{
                         bottle.hit = true;
                         bottle.currentImage = 0; // splashImageIndex auf 0 setzen, damit die animation immer von Anfang abgespeilt wird
                         SoundHub.playSound(SoundHub.bottleSplashed);
+                        SoundHub.playSound(SoundHub.endbossHurt);
                     }
                     boss.hit();
                     this.healthBarEndboss.setPercentage(boss.health);
