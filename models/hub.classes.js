@@ -12,6 +12,10 @@ class SoundHub{
     static pepeDead = new Audio("audio/pepe_dead.mp3");
     static coinCollected = new Audio("audio/coin_collected.mp3");
     static bottleCollected = new Audio("audio/bottle_collected.mp3");
+    static pepeSleeping = new Audio("audio/pepe_sleeping.mp3");
+    static chickenDead = new Audio("audio/chicken_dead.mp3");
+    static endbossWalking = new Audio("audio/endboss_walking.mp3");
+    static endbossAggro = new Audio("audio/endboss_aggro.mp3");
 
     static allSounds = [SoundHub.characterWalking,]
 

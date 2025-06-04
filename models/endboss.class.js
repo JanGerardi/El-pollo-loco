@@ -62,6 +62,16 @@ class Endboss extends MovableObject{
     animateMovement = () => {
         if (this.triggered && !this.isDead()){
             this.moveLeft();
+            if (SoundHub.endbossWalking.paused) {
+                SoundHub.endbossWalking.playbackRate = 2.5;
+                SoundHub.playSound(SoundHub.endbossWalking);
+            }
+            if (SoundHub.endbossAggro.paused) {
+            SoundHub.playSound(SoundHub.endbossAggro);
+            }
+        } else{
+            SoundHub.stopSound(SoundHub.endbossWalking);
+            SoundHub.stopSound(SoundHub.endbossAggro);
         }
     };
 

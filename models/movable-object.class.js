@@ -59,6 +59,7 @@ class MovableObject extends DrawableObject{
             this.idleImageCycle = 0;
             this.sleeping = false;
         }
+        this.pepeIsSleeping(images);
     }
 
     // Fall implementieren

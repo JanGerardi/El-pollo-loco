@@ -125,6 +125,16 @@ class Character extends MovableObject{
         this.world.camera_x = -this.x + 50; // hier wird die "Kamerabewegung", die auf die Bewegung des Characters reagiert, realisiert und um 50px nach rechts gesetzt
     };
 
+    pepeIsSleeping(images){
+        if (this.sleeping && images === this.IMAGES_LONG_IDLE) {
+            if (SoundHub.pepeSleeping.paused) {
+                SoundHub.playSound(SoundHub.pepeSleeping);
+            }
+        } else{
+            SoundHub.stopSound(SoundHub.pepeSleeping);
+        }
+    }
+
     animateImages = () => {
         if (this.isDead()) {
             this.playAnimation(this.IMAGES_DEAD);
