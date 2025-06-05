@@ -9,7 +9,6 @@ class SoundHub{
     static throwingBottle = new Audio("audio/bottle_throwing.mp3");
     static bottleSplashed = new Audio("audio/bottle_splashed.mp3");
     static pepeHurt = new Audio("audio/pepe_hurt.mp3");
-    static pepeDead = new Audio("audio/pepe_dead.mp3");
     static coinCollected = new Audio("audio/coin_collected.mp3");
     static bottleCollected = new Audio("audio/bottle_collected.mp3");
     static pepeSleeping = new Audio("audio/pepe_sleeping.mp3");

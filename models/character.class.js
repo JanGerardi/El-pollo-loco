@@ -4,6 +4,10 @@ class Character extends MovableObject{
     y = 180;
     height = 250;
     width = 150;
+    rX;
+    rY;
+    rH;
+    rW;
     speed = 8;
     health = 100;
     sleeping = false;
@@ -66,6 +70,12 @@ class Character extends MovableObject{
         "img/2_character_pepe/1_idle/long_idle/I-20.png"
     ];
     world; // zuordnung der wolrd, damit Character bezug auf world hat und unter anderem die Camera nun dem Character folgt
+    offset ={
+        top: 50,
+        right: 50,
+        bottom: 50,
+        left: 50
+    };
     //#endregion
 
     constructor(){
@@ -84,10 +94,6 @@ class Character extends MovableObject{
     //#region methods
     animateMovement = () => {
         if (this.isDead()) {
-            SoundHub.stopSound(SoundHub.pepeHurt);
-            if (SoundHub.pepeDead.paused) {
-                SoundHub.playSound(SoundHub.pepeDead);
-            }
             return;
         }
         if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {

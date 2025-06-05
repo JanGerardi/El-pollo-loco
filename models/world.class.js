@@ -29,7 +29,7 @@ class World{
     setWorld(){
         this.character.world = this; // anstatt this.world.character.world.keyboard, muss nun this.world.keyboard innerhalb der Klasse Character 
                                      //verwendet werden, um auf die Variablen zuzugreifen welche in der übergeordneten Klasse World definiert sind
-    }
+        }
 
     run = () => {
         this.checkCollisions();
@@ -66,6 +66,8 @@ class World{
             SoundHub.playSound(SoundHub.throwingBottle);
             this.thrownObjects.push(bottle);
             this.throwableObjects.shift();
+            this.bottleBar.bottleUsed();
+            this.bottleBar.setPercentage(this.bottleBar.percentage);
             this.keyboard.D = false;
         }
     }

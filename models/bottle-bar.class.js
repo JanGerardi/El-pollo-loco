@@ -49,5 +49,9 @@ class BottleBar extends DrawableObject{
         this.percentage += 20;
     }
 
+    bottleUsed(){
+        this.percentage -= 20;
+    }
+
     //#endregion
 }

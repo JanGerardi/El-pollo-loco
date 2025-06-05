@@ -24,7 +24,7 @@ class MovableObject extends DrawableObject{
     }
 
     hitByEndboss(){
-        this.health -= 7;
+        this.health -= 10;
         if (this.health < 0) {
             this.health = 0;
         } else {
@@ -59,7 +59,7 @@ class MovableObject extends DrawableObject{
             this.idleImageCycle = 0;
             this.sleeping = false;
         }
-        this.pepeIsSleeping(images);
+        if (this.pepeIsSleeping)this.pepeIsSleeping(images);
     }
 
     // Fall implementieren
