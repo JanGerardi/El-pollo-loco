@@ -8,6 +8,7 @@ let dWasReleased = true;
 function init(){
     canvas = document.getElementById("canvas");
     world  = new World(canvas, keyboard);
+    document.getElementById("startOverlay").style.display = "none";
 }
 
 // Keyboard-Event Taste gedrückt
