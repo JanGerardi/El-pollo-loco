@@ -8,10 +8,10 @@ class MovableObject extends DrawableObject{
 
     //#region methods
     isColliding(mObject){
-        return this.x < mObject.x + mObject.width && // Prüft, ob die linke Seite des ersten Objekts links von der rechten Seite des anderen Objekts ist
-            this.x + this.width > mObject.x && // Prüft, ob die rechte Seite des ersten Objekts rechts von der linken Seite des anderen Objekts ist
-            this.y < mObject.y + mObject.height && // Prüft, ob die obere Seite des ersten Objekts oberhalb der unteren Seite des anderen Objekts ist
-            this.y + this.height > mObject.y; // Prüft, ob die untere Seite des ersten Objekts unterhalb der oberen Seite des anderen Objekts ist
+        return this.rX + this.rW > mObject.rX && // Prüft, ob die linke Seite des ersten Objekts links von der rechten Seite des anderen Objekts ist
+            this.rY + this.rH > mObject.rY && // Prüft, ob die rechte Seite des ersten Objekts rechts von der linken Seite des anderen Objekts ist
+            this.rX < mObject.rX + mObject.rW && // Prüft, ob die obere Seite des ersten Objekts oberhalb der unteren Seite des anderen Objekts ist
+            this.rY < mObject.rY + mObject.rH; // Prüft, ob die untere Seite des ersten Objekts unterhalb der oberen Seite des anderen Objekts ist
     }
 
     hit(){

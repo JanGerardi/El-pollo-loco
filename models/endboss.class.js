@@ -3,12 +3,15 @@ class Endboss extends MovableObject{
     height = 350;
     width = 300;
     y = 100;
-    health = 80;
     x = 2550;
+    health = 80;
+    rX;
+    rY;
+    rH;
+    rW;
     triggered = false;
     isAttacking = false;
     speed = 5;
-
     IMAGES_ALERT = [
         "img/4_enemie_boss_chicken/2_alert/G5.png",
         "img/4_enemie_boss_chicken/2_alert/G6.png",
@@ -45,6 +48,12 @@ class Endboss extends MovableObject{
         "img/4_enemie_boss_chicken/5_dead/G25.png",
         "img/4_enemie_boss_chicken/5_dead/G26.png",
     ];
+    offset ={
+        top: 60,
+        right: 40,
+        bottom: 30,
+        left: 20
+    };
     //#endregion
 
     constructor(){
@@ -54,6 +63,7 @@ class Endboss extends MovableObject{
         this.loadImages(this.IMAGES_ATTACK);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
+        this.getRealFrame();
         IntervalHub.setStoppableInterval(this.animateImages, 1000/5);
         IntervalHub.setStoppableInterval(this.animateMovement, 1000/60);
     }
@@ -91,6 +101,13 @@ class Endboss extends MovableObject{
 
     moveLeft(){
         return this.x -= this.speed;
+    }
+
+    getRealFrame(){
+        this.rX = this.x + this.offset.left;
+        this.rY = this.y + this.offset.top;
+        this.rW = this.width - this.offset.left - this.offset.right;
+        this.rH = this.height - this.offset.top - this.offset.bottom;
     }
     //#endregion
 }

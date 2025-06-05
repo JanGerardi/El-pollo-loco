@@ -5,6 +5,10 @@ class Chicken extends MovableObject{
     height = 70;
     width = 70;
     health = 1;
+    rX;
+    rY;
+    rH;
+    rW;
     IMAGES_WALKING = [
         "img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
         "img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
@@ -13,6 +17,12 @@ class Chicken extends MovableObject{
     IMAGES_DEAD = [
         "img/3_enemies_chicken/chicken_normal/2_dead/dead.png"
     ];
+    offset ={
+        top: 5,
+        right: 5,
+        bottom: 5,
+        left: 5
+    };
     //#endregion
 
     constructor(){
@@ -21,6 +31,7 @@ class Chicken extends MovableObject{
         this.loadImages(this.IMAGES_DEAD);
         this.x = 600 + Math.random() * 1800; // zwischen 200px und 700px;
         this.speed = 0.4 + Math.random() * 0.6;
+        this.getRealFrame();
         IntervalHub.setStoppableInterval(this.animateMovement, 1000/60);
         IntervalHub.setStoppableInterval(this.animateImages, 1000/10);
     }
@@ -39,5 +50,12 @@ class Chicken extends MovableObject{
             this.moveLeft();
         }
     };
+
+    getRealFrame(){
+        this.rX = this.x + this.offset.left;
+        this.rY = this.y + this.offset.top;
+        this.rW = this.width - this.offset.left - this.offset.right;
+        this.rH = this.height - this.offset.top - this.offset.bottom;
+    }
     //#endregion
 }

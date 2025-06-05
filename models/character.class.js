@@ -71,10 +71,10 @@ class Character extends MovableObject{
     ];
     world; // zuordnung der wolrd, damit Character bezug auf world hat und unter anderem die Camera nun dem Character folgt
     offset ={
-        top: 50,
-        right: 50,
-        bottom: 50,
-        left: 50
+        top: 110,
+        right: 45,
+        bottom: 10,
+        left: 30
     };
     //#endregion
 
@@ -86,6 +86,7 @@ class Character extends MovableObject{
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_LONG_IDLE);
+        this.getRealFrame();
         IntervalHub.setStoppableInterval(this.applyGravity, 1000/25);
         IntervalHub.setStoppableInterval(this.animateMovement, 1000/60);
         IntervalHub.setStoppableInterval(this.animateImages, 1000/10);
@@ -156,5 +157,12 @@ class Character extends MovableObject{
             this.playAnimation(this.IMAGES_IDLE);
         }
     };
+
+    getRealFrame(){
+        this.rX = this.x + this.offset.left;
+        this.rY = this.y + this.offset.top;
+        this.rW = this.width - this.offset.left - this.offset.right;
+        this.rH = this.height - this.offset.top - this.offset.bottom;
+    }
     //#endregion
 }
