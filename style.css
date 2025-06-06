@@ -42,20 +42,76 @@ canvas{
     align-items: center;
     z-index: 100;
     top: 190px;
+
+    #controllsButton{
+        bottom: 170px;
+        font-size: 1.5rem;
+        padding: 5px;
+        color: white;
+        background-color: orange;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &&:hover{
+            background-color: rgb(160, 104, 0);
+            color: black;
+        }
+    }
 }
 
-#startButton{
-    bottom: 170px;
-    font-size: 1.5rem;
-    padding: 5px;
-    color: white;
-    background-color: orange;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
 
-    &&:hover{
-        background-color: rgb(255, 181, 44);
-        color: black;
+
+#controllsOverlay{
+    position: absolute;
+    width: 720px;
+    height: 480px;
+    background-image: url("img/5_background/background_img.png");
+    background-position: center;
+    background-size: 100% 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    z-index: 99;
+    top: 190px;
+
+    #startButton{
+        font-size: 1.5rem;
+        padding: 5px;
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &&:hover{
+            background-color: rgb(255, 181, 44);
+            color: black;
+        }
+    }
+
+    h2{
+        margin: 40px;
+        font-size: 2rem;
+    }
+
+    #controllsTable{
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+
+        td{
+            padding: 10px;
+
+            span{
+                font-size: 1.5rem;
+            }
+        }
+
+        button{
+            font-size: 1.5rem;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
     }
 }

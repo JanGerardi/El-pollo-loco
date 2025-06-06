@@ -8,6 +8,10 @@ let dWasReleased = true;
 function init(){
     canvas = document.getElementById("canvas");
     world  = new World(canvas, keyboard);
+    document.getElementById("controllsOverlay").style.display = "none";
+}
+
+function showControlls(){
     document.getElementById("startOverlay").style.display = "none";
 }
 
