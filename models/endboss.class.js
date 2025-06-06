@@ -83,8 +83,10 @@ class Endboss extends MovableObject{
     };
 
     animateImages = () => {
-        if (this.isDead()) {
+        if (this.isDead() && !gameover) {
             this.playAnimation(this.IMAGES_DEAD);
+            winOverlay();
+            gameover = true;
         } else if (this.isHurt()){
             this.playAnimation(this.IMAGES_HURT);
         } else if (this.isAttacking){

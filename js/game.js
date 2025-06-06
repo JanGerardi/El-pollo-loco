@@ -3,18 +3,39 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let dWasReleased = true;
+let gameover = false;
 //#endregion
 
 function init(){
-    canvas = document.getElementById("canvas");
-    world  = new World(canvas, keyboard);
+    gameover = false;
     document.getElementById("controllsOverlay").style.display = "none";
     document.getElementById("winOverlay").style.display = "none";
     document.getElementById("loseOverlay").style.display = "none";
+    canvas = document.getElementById("canvas");
+    world  = new World(canvas, keyboard);
 }
 
 function showControlls(){
     document.getElementById("startOverlay").style.display = "none";
+}
+
+function backToMainScreen(){
+    document.getElementById("winOverlay").style.display = "none";
+    document.getElementById("loseOverlay").style.display = "none";
+    document.getElementById("startOverlay").style.display = "flex";
+    document.getElementById("controllsOverlay").style.display = "flex";
+}
+
+function lostOverlay(){
+    document.getElementById("loseOverlay").style.display = "flex";
+    SoundHub.stopAllSounds();
+    IntervalHub.stopAllIntervals();
+}
+
+function winOverlay(){
+    document.getElementById("winOverlay").style.display = "flex";
+    SoundHub.stopAllSounds();
+    IntervalHub.stopAllIntervals();
 }
 
 // Keyboard-Event Taste gedrückt

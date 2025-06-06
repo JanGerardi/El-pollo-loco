@@ -18,7 +18,7 @@ class SoundHub{
     static endbossHurt = new Audio("audio/endboss_hurt.mp3");
 
     static allSounds = [SoundHub.characterWalkingRight, SoundHub.characterWalkingLeft, SoundHub.characterJumping, SoundHub.throwingBottle, SoundHub.bottleSplashed,
-        SoundHub.pepeHurt, SoundHub.pepeDead, SoundHub.coinCollected, SoundHub.bottleCollected, SoundHub.pepeSleeping, SoundHub.chickenDead, SoundHub.endbossWalking,
+        SoundHub.pepeHurt, SoundHub.coinCollected, SoundHub.bottleCollected, SoundHub.pepeSleeping, SoundHub.chickenDead, SoundHub.endbossWalking,
         SoundHub.endbossAggro, SoundHub.endbossHurt
     ]
 
@@ -36,7 +36,7 @@ class SoundHub{
         SoundHub.allSounds.forEach(sound => {
             sound.pause();  // Pausiert alle Sounds in allSounds
         });
-        document.getElementById('volume').value = 0.2;
+        // document.getElementById('volume').value = 0.2;
     }
 }
 
