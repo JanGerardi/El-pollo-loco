@@ -3,6 +3,10 @@ class DrawableObject{
     img;
     imageCache = {};
     currentImage = 0;
+    rX;
+    rY;
+    rH;
+    rW;
     //#endregion
 
     //#region methods
@@ -13,6 +17,12 @@ class DrawableObject{
 
     draw(ctx){
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+    getRealFrame(){
+        this.rX = this.x + this.offset.left;
+        this.rY = this.y + this.offset.top;
+        this.rW = this.width - this.offset.left - this.offset.right;
+        this.rH = this.height - this.offset.top - this.offset.bottom;
     }
 
     drawFrame(ctx){

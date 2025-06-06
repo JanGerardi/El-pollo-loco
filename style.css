@@ -21,12 +21,13 @@ body{
 
 h1{
     top: 50px;
+    font-size: 3rem;
 }
 
 canvas{
     position: absolute;
     background-color: black;
-    top: 148px;
+    top: 190px;
 }
 
 #startOverlay{
@@ -40,7 +41,7 @@ canvas{
     justify-content: center;
     align-items: center;
     z-index: 100;
-    top: 148px;
+    top: 190px;
 }
 
 #startButton{

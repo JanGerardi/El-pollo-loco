@@ -1,7 +1,7 @@
 class World{
     //#region attributes
     character = new Character();
-    level = level1;
+    level = new Level();
     canvas;
     ctx;
     keyboard;
@@ -20,7 +20,7 @@ class World{
         this.keyboard = keyboard;
         this.draw(); // Zeichnung wird ausgeführt
         this.setWorld();
-        IntervalHub.setStoppableInterval(this.run, 1000/25);
+        IntervalHub.setStoppableInterval(this.run, 1000/120);
     }
 
     //#region methods

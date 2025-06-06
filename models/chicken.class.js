@@ -5,10 +5,6 @@ class Chicken extends MovableObject{
     height = 70;
     width = 70;
     health = 1;
-    rX;
-    rY;
-    rH;
-    rW;
     IMAGES_WALKING = [
         "img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
         "img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
@@ -49,13 +45,7 @@ class Chicken extends MovableObject{
         if (this.health == 1) {
             this.moveLeft();
         }
+        this.getRealFrame();
     };
-
-    getRealFrame(){
-        this.rX = this.x + this.offset.left;
-        this.rY = this.y + this.offset.top;
-        this.rW = this.width - this.offset.left - this.offset.right;
-        this.rH = this.height - this.offset.top - this.offset.bottom;
-    }
     //#endregion
 }

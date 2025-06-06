@@ -2,12 +2,8 @@ class ThrowableObject extends MovableObject{
     //#region attributes
     x;
     y;
-    height = 50;
-    width = 50;
-    rX;
-    rY;
-    rH;
-    rW;
+    height = 60;
+    width = 60;
     hit = false;
     removeFromWorld = false;
     IMAGES_BOTTLE_SPINNIG = [
@@ -25,10 +21,10 @@ class ThrowableObject extends MovableObject{
         "img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png",
     ];
     offset ={
-        top: 50,
-        right: 50,
-        bottom: 50,
-        left: 50
+        top: 5,
+        right: 5,
+        bottom: 5,
+        left: 5
     };
     //#endregion
 
@@ -55,6 +51,7 @@ class ThrowableObject extends MovableObject{
             this.y -= this.speedY;
             this.speedY -= this.acceleration;
         }
+        this.getRealFrame();
     }
 
     animateImages = () => {
@@ -75,13 +72,6 @@ class ThrowableObject extends MovableObject{
         }else {
             this.removeFromWorld = true; // Bottle entfernen
         }
-    }
-
-    getRealFrame(){
-        this.rX = this.x + this.offset.left;
-        this.rY = this.y + this.offset.top;
-        this.rW = this.width - this.offset.left - this.offset.right;
-        this.rH = this.height - this.offset.top - this.offset.bottom;
     }
     //#endregion
 }

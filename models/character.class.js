@@ -4,10 +4,6 @@ class Character extends MovableObject{
     y = 180;
     height = 250;
     width = 150;
-    rX;
-    rY;
-    rH;
-    rW;
     speed = 8;
     health = 100;
     sleeping = false;
@@ -129,6 +125,7 @@ class Character extends MovableObject{
             this.jump();
             SoundHub.playSound(SoundHub.characterJumping);
             }
+        this.getRealFrame();
         this.world.camera_x = -this.x + 50; // hier wird die "Kamerabewegung", die auf die Bewegung des Characters reagiert, realisiert und um 50px nach rechts gesetzt
     };
 
@@ -157,12 +154,5 @@ class Character extends MovableObject{
             this.playAnimation(this.IMAGES_IDLE);
         }
     };
-
-    getRealFrame(){
-        this.rX = this.x + this.offset.left;
-        this.rY = this.y + this.offset.top;
-        this.rW = this.width - this.offset.left - this.offset.right;
-        this.rH = this.height - this.offset.top - this.offset.bottom;
-    }
     //#endregion
 }

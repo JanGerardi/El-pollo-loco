@@ -4,11 +4,7 @@ class Endboss extends MovableObject{
     width = 300;
     y = 100;
     x = 2550;
-    health = 80;
-    rX;
-    rY;
-    rH;
-    rW;
+    health = 350;
     triggered = false;
     isAttacking = false;
     speed = 5;
@@ -83,6 +79,7 @@ class Endboss extends MovableObject{
             SoundHub.stopSound(SoundHub.endbossWalking);
             SoundHub.stopSound(SoundHub.endbossAggro);
         }
+        this.getRealFrame();
     };
 
     animateImages = () => {
@@ -101,13 +98,6 @@ class Endboss extends MovableObject{
 
     moveLeft(){
         return this.x -= this.speed;
-    }
-
-    getRealFrame(){
-        this.rX = this.x + this.offset.left;
-        this.rY = this.y + this.offset.top;
-        this.rW = this.width - this.offset.left - this.offset.right;
-        this.rH = this.height - this.offset.top - this.offset.bottom;
     }
     //#endregion
 }
