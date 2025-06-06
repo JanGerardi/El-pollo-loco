@@ -5,7 +5,7 @@ class Character extends MovableObject{
     height = 250;
     width = 150;
     speed = 8;
-    health = 100;
+    health = 300;
     sleeping = false;
     idleImageCycle = 0;
     IMAGES_WALKING = [

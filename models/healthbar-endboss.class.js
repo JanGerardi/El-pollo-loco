@@ -12,13 +12,13 @@ class HealthbarEndboss extends DrawableObject{
         "img/7_statusbars/2_statusbar_endboss/blue/blue80.png",
         "img/7_statusbars/2_statusbar_endboss/blue/blue100.png"
     ];
-    percentage = 100;
+    percentage = 300;
     //#endregion
 
     constructor(){
         super();
         this.loadImages(this.IMAGES_HEALTHBAR_ENDBOSS);
-        this.setPercentage(100);
+        this.setPercentage(300);
     }
 
     //#region methods
@@ -30,15 +30,15 @@ class HealthbarEndboss extends DrawableObject{
 
     //Ermittlung des Index der IMAGES
     resolveImageIndex(){
-        if (this.percentage == 100) {
+        if (this.percentage == 300) {
             return 5;
-        } else if (this.percentage > 80) {
+        } else if (this.percentage > 240) {
             return 4;
-        } else if (this.percentage > 60) {
+        } else if (this.percentage > 180) {
             return 3;
-        } else if (this.percentage > 40) {
+        } else if (this.percentage > 120) {
             return 2;
-        } else if (this.percentage > 20) {
+        } else if (this.percentage > 60) {
             return 1;
         } else {
             return 0;

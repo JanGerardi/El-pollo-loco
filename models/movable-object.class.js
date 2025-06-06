@@ -24,7 +24,7 @@ class MovableObject extends DrawableObject{
     }
 
     hitByEndboss(){
-        this.health -= 10;
+        this.health -= 6;
         if (this.health < 0) {
             this.health = 0;
         } else {
@@ -41,7 +41,7 @@ class MovableObject extends DrawableObject{
     isDead(){
         return this.health == 0;
     }
-    
+
     playAnimation(images){
         let i = this.currentImage % images.length; // 0 % 6 => 0 Rest 0, / 7 % 6 => 2 Rest 1 ... der Rest ist i ,erhöht sich immer um 1
         let path = images[i];
