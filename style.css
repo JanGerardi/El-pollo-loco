@@ -130,7 +130,6 @@ canvas{
     align-items: center;
     z-index: 98;
     top: 190px;
-    /* display: none; */
 
     #restartGameButton{
         top: 150px;
@@ -150,6 +149,54 @@ canvas{
 
     #backToMainScreenButton{
         top: 150px;
+        font-size: 1.5rem;
+        padding: 5px;
+        color: white;
+        background-color: orange;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &&:hover{
+            background-color: rgb(160, 104, 0);
+            color: black;
+        }
+    }
+}
+
+#loseOverlay{
+    position: absolute;
+    width: 720px;
+    height: 480px;
+    background-image: url("img/You won, you lost/You lost b.png");
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 97;
+    top: 190px;
+
+    #restartGameButton{
+        top: 180px;
+        font-size: 1.5rem;
+        padding: 5px;
+        color: white;
+        background-color: orange;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &&:hover{
+            background-color: rgb(160, 104, 0);
+            color: black;
+        }
+    }
+
+    #backToMainScreenButton{
+        top: 180px;
         font-size: 1.5rem;
         padding: 5px;
         color: white;

@@ -9,6 +9,8 @@ function init(){
     canvas = document.getElementById("canvas");
     world  = new World(canvas, keyboard);
     document.getElementById("controllsOverlay").style.display = "none";
+    document.getElementById("winOverlay").style.display = "none";
+    document.getElementById("loseOverlay").style.display = "none";
 }
 
 function showControlls(){
