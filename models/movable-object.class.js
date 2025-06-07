@@ -48,14 +48,14 @@ class MovableObject extends DrawableObject{
         this.img = this.imageCache[path];
         this.currentImage++;
 
-        if (images === this.IMAGES_IDLE) {
+        if (images === ImgHub.PEPE.IMAGES_IDLE) {
             if (i === images.length - 1) {
                 this.idleImageCycle++;
-                if (this.idleImageCycle >= 4) {
+                if (this.idleImageCycle >= 6) {
                     this.sleeping = true;
                 }
             }
-        } else if(images !== this.IMAGES_LONG_IDLE) {
+        } else if(images !== ImgHub.PEPE.IMAGES_LONG_IDLE) {
             this.idleImageCycle = 0;
             this.sleeping = false;
         }

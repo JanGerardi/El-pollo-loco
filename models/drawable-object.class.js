@@ -33,7 +33,7 @@ class DrawableObject{
             ctx.strokeStyle = "blue";
             ctx.rect(this.x + this.offset.left, this.y + this.offset.top,
                     this.width - this.offset.left - this.offset.right, this.height - this.offset.top - this.offset.bottom);
-            ctx.stroke(); // Ausführung der Zeichnung, muss am Ende des Pfades stehen
+            // ctx.stroke(); // Ausführung der Zeichnung, muss am Ende des Pfades stehen
         }
     }
 

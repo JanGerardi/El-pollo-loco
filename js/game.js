@@ -6,6 +6,7 @@ let dWasReleased = true;
 let gameover = false;
 //#endregion
 
+//#region Functions
 function init(){
     gameover = false;
     document.getElementById("controllsOverlay").style.display = "none";
@@ -79,3 +80,4 @@ window.addEventListener("keyup", (event) => {  //Keyboard-Event wird ermittelt "
         keyboard.D = false;
     }
 });
+//#endregion
