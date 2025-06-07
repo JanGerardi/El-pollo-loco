@@ -4,29 +4,21 @@ class Coinsbar extends DrawableObject{
     y = 40;
     width = 180;
     height = 45;
-    IMAGES_COINSBAR = [
-        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/0.png",
-        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/20.png",
-        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/40.png",
-        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/60.png",
-        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/80.png",
-        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/100.png"
-    ];
     percentage = 0;
     //#endregion
 
     constructor(){
         super();
-        this.loadImages(this.IMAGES_COINSBAR);
+        this.loadImages(ImgHub.IMAGES_COINSBAR);
         this.setPercentage(0);
-    }
+    };
 
     //#region methods
     setPercentage(percentage){
         this.percentage = percentage; // index der IMAGES 0 bis 5 ermitteln, damit das richtige IMAGE (Coinanzeige) angezeigt wird
-        let path = this.IMAGES_COINSBAR[this.resolveImageIndex()];
+        let path = ImgHub.IMAGES_COINSBAR[this.resolveImageIndex()];
         this.img = this.imageCache[path];
-    }
+    };
 
     //Ermittlung des Index der IMAGES
     resolveImageIndex(){
@@ -43,11 +35,10 @@ class Coinsbar extends DrawableObject{
         } else {
             return 0;
         }
-    }
+    };
 
         collect(){
         this.percentage += 20;
-    }
-
+    };
     //#endregion
 }

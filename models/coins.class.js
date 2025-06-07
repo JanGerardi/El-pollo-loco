@@ -16,5 +16,5 @@ class Coin extends DrawableObject{
         super().loadImage(imagePath);
         this.x = x;
         this.getRealFrame();
-    }
+    };
 }

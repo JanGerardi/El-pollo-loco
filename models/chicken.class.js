@@ -14,7 +14,7 @@ class Chicken extends MovableObject{
     //#endregion
 
     constructor(){
-        super().loadImage("img/3_enemies_chicken/chicken_normal/1_walk/1_w.png")
+        super().loadImage(ImgHub.CHICKEN.IMAGES_WALKING[0])
         this.loadImages(ImgHub.CHICKEN.IMAGES_WALKING);
         this.loadImages(ImgHub.CHICKEN.IMAGES_DEAD);
         this.x = 600 + Math.random() * 1800; // zwischen 200px und 700px;
@@ -22,7 +22,7 @@ class Chicken extends MovableObject{
         this.getRealFrame();
         IntervalHub.setStoppableInterval(this.animateMovement, 1000/60);
         IntervalHub.setStoppableInterval(this.animateImages, 1000/10);
-    }
+    };
 
     //#region methods
     animateImages = () => {

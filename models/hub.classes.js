@@ -7,6 +7,7 @@ class ImgHub{
         "img/7_statusbars/1_statusbar/3_statusbar_bottle/green/80.png",
         "img/7_statusbars/1_statusbar/3_statusbar_bottle/green/100.png"
     ];
+
     static PEPE ={
         IMAGES_WALKING : [
             "img/2_character_pepe/2_walk/W-21.png",
@@ -66,6 +67,7 @@ class ImgHub{
             "img/2_character_pepe/1_idle/long_idle/I-20.png"
         ]
     };
+
     static CHICKEN_SMALL = {
         IMAGES_WALKING : [
             "img/3_enemies_chicken/chicken_small/1_walk/1_w.png",
@@ -76,6 +78,7 @@ class ImgHub{
             "img/3_enemies_chicken/chicken_small/2_dead/dead.png"
         ]
     };
+
     static CHICKEN = {
         IMAGES_WALKING : [
             "img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
@@ -85,7 +88,90 @@ class ImgHub{
         IMAGES_DEAD : [
             "img/3_enemies_chicken/chicken_normal/2_dead/dead.png"
         ]
-    }
+    };
+
+    static IMAGES_COINSBAR = [
+        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/0.png",
+        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/20.png",
+        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/40.png",
+        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/60.png",
+        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/80.png",
+        "img/7_statusbars/1_statusbar/1_statusbar_coin/orange/100.png"
+    ];
+
+    static ENDBOSS = {
+        IMAGES_ALERT : [
+            "img/4_enemie_boss_chicken/2_alert/G5.png",
+            "img/4_enemie_boss_chicken/2_alert/G6.png",
+            "img/4_enemie_boss_chicken/2_alert/G7.png",
+            "img/4_enemie_boss_chicken/2_alert/G8.png",
+            "img/4_enemie_boss_chicken/2_alert/G9.png",
+            "img/4_enemie_boss_chicken/2_alert/G10.png",
+            "img/4_enemie_boss_chicken/2_alert/G11.png",
+            "img/4_enemie_boss_chicken/2_alert/G12.png",
+        ],
+        IMAGES_WALKING : [
+            "img/4_enemie_boss_chicken/1_walk/G1.png",
+            "img/4_enemie_boss_chicken/1_walk/G2.png",
+            "img/4_enemie_boss_chicken/1_walk/G3.png",
+            "img/4_enemie_boss_chicken/1_walk/G4.png"
+        ],
+        IMAGES_ATTACK : [
+            "img/4_enemie_boss_chicken/3_attack/G13.png",
+            "img/4_enemie_boss_chicken/3_attack/G14.png",
+            "img/4_enemie_boss_chicken/3_attack/G15.png",
+            "img/4_enemie_boss_chicken/3_attack/G16.png",
+            "img/4_enemie_boss_chicken/3_attack/G17.png",
+            "img/4_enemie_boss_chicken/3_attack/G18.png",
+            "img/4_enemie_boss_chicken/3_attack/G19.png",
+            "img/4_enemie_boss_chicken/3_attack/G20.png",
+        ],
+        IMAGES_HURT : [
+            "img/4_enemie_boss_chicken/4_hurt/G21.png",
+            "img/4_enemie_boss_chicken/4_hurt/G22.png",
+            "img/4_enemie_boss_chicken/4_hurt/G23.png",
+        ],
+        IMAGES_DEAD : [
+            "img/4_enemie_boss_chicken/5_dead/G24.png",
+            "img/4_enemie_boss_chicken/5_dead/G25.png",
+            "img/4_enemie_boss_chicken/5_dead/G26.png",
+        ]
+    };
+
+    static IMAGES_HEALTHBAR_ENDBOSS = [
+        "img/7_statusbars/2_statusbar_endboss/blue/blue0.png",
+        "img/7_statusbars/2_statusbar_endboss/blue/blue20.png",
+        "img/7_statusbars/2_statusbar_endboss/blue/blue40.png",
+        "img/7_statusbars/2_statusbar_endboss/blue/blue60.png",
+        "img/7_statusbars/2_statusbar_endboss/blue/blue80.png",
+        "img/7_statusbars/2_statusbar_endboss/blue/blue100.png"
+    ];
+
+    static IMAGES_HEALTHBAR_PEPE = [
+        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png",
+        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/20.png",
+        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/40.png",
+        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/60.png",
+        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/80.png",
+        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/100.png"
+    ];
+
+    static THROWN_BOTTLE = {
+        IMAGES_BOTTLE_SPINNIG : [
+            "img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png",
+            "img/6_salsa_bottle/bottle_rotation/2_bottle_rotation.png",
+            "img/6_salsa_bottle/bottle_rotation/3_bottle_rotation.png",
+            "img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png"
+        ],
+        IMAGES_BOTTLE_SPLASH : [
+            "img/6_salsa_bottle/bottle_rotation/bottle_splash/1_bottle_splash.png",
+            "img/6_salsa_bottle/bottle_rotation/bottle_splash/2_bottle_splash.png",
+            "img/6_salsa_bottle/bottle_rotation/bottle_splash/3_bottle_splash.png",
+            "img/6_salsa_bottle/bottle_rotation/bottle_splash/4_bottle_splash.png",
+            "img/6_salsa_bottle/bottle_rotation/bottle_splash/5_bottle_splash.png",
+            "img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png",
+        ]
+    };
 }
 
 class SoundHub{
@@ -106,24 +192,24 @@ class SoundHub{
     static allSounds = [SoundHub.characterWalkingRight, SoundHub.characterWalkingLeft, SoundHub.characterJumping, SoundHub.throwingBottle, SoundHub.bottleSplashed,
         SoundHub.pepeHurt, SoundHub.coinCollected, SoundHub.bottleCollected, SoundHub.pepeSleeping, SoundHub.chickenDead, SoundHub.endbossWalking,
         SoundHub.endbossAggro, SoundHub.endbossHurt
-    ]
+    ];
 
     static playSound(sound){
         sound.volume = 0.2; // Setzt die Lautstärke auf 0.2 = 20% / 1 = 100%
         sound.currentTime = 0; // Startet den Sound von Anfang
         sound.play();
-    }
+    };
 
     static stopSound(sound){
         sound.pause();  // Pausiert den Sound
-    }
+    };
 
     static stopAllSounds() {
         SoundHub.allSounds.forEach(sound => {
             sound.pause();  // Pausiert alle Sounds in allSounds
         });
         // document.getElementById('volume').value = 0.2;
-    }
+    };
 }
 
 class IntervalHub{
@@ -133,9 +219,9 @@ class IntervalHub{
     static setStoppableInterval(func, time){
         const id = setInterval(func, time);
         IntervalHub.intervalIds.push(id);
-    }
+    };
 
     static stopAllIntervals(){
         IntervalHub.intervalIds.forEach(clearInterval);
-    }
+    };
 }

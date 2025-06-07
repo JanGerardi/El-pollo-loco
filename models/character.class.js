@@ -29,7 +29,7 @@ class Character extends MovableObject{
         IntervalHub.setStoppableInterval(this.applyGravity, 1000/25);
         IntervalHub.setStoppableInterval(this.animateMovement, 1000/60);
         IntervalHub.setStoppableInterval(this.animateImages, 1000/10);
-    }
+    };
     
     //#region methods
     animateMovement = () => {
@@ -61,7 +61,7 @@ class Character extends MovableObject{
         } else{
             SoundHub.stopSound(SoundHub.pepeSleeping);
         }
-    }
+    };
 
     animateMovementRight(){
         this.otherDirection = false;
@@ -113,9 +113,9 @@ class Character extends MovableObject{
     addLoseSequenz(){
         this.playAnimation(ImgHub.PEPE.IMAGES_DEAD);
         setTimeout(() => {
-                lostOverlay();
-                gameover = true;
-            }, 350);
+            lostOverlay();
+            gameover = true;
+        }, 350);
     };
     //#endregion
 }

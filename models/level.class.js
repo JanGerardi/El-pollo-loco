@@ -9,7 +9,7 @@ class Level{
         new SmallChicken()
     ];
     endboss = [
-        new Endboss(),
+        new Endboss()
     ];
     clouds = [
         new Cloud()
@@ -34,14 +34,14 @@ class Level{
         new BackgroundObject("img/5_background/layers/air.png", 719*3),
         new BackgroundObject("img/5_background/layers/3_third_layer/2.png", 719*3),
         new BackgroundObject("img/5_background/layers/2_second_layer/2.png", 719*3),
-        new BackgroundObject("img/5_background/layers/1_first_layer/2.png", 719*3),
+        new BackgroundObject("img/5_background/layers/1_first_layer/2.png", 719*3)
     ];
     coins = [
         new Coin("img/8_coin/coin_1.png", 600),
         new Coin("img/8_coin/coin_1.png", 1000),
         new Coin("img/8_coin/coin_1.png", 1400),
         new Coin("img/8_coin/coin_1.png", 1800),
-        new Coin("img/8_coin/coin_1.png", 2200),
+        new Coin("img/8_coin/coin_1.png", 2200)
     ];
     bottles = [
         new Bottle("img/6_salsa_bottle/1_salsa_bottle_on_ground.png", 400),

@@ -4,29 +4,21 @@ class Healthbar extends DrawableObject{
     y = 0;
     width = 180;
     height = 45;
-    IMAGES_HEALTHBAR = [
-        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png", // 0
-        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/20.png",
-        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/40.png",
-        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/60.png",
-        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/80.png",
-        "img/7_statusbars/1_statusbar/2_statusbar_health/blue/100.png" // 5
-    ];
     percentage = 300;
     //#endregion
 
     constructor(){
         super();
-        this.loadImages(this.IMAGES_HEALTHBAR);
+        this.loadImages(ImgHub.IMAGES_HEALTHBAR_PEPE);
         this.setPercentage(300);
-    }
+    };
 
     //#region methods
     setPercentage(percentage){
         this.percentage = percentage; // index der IMAGES 0 bis 5 ermitteln, damit das richtige IMAGE (Lebensanzeige) angezeigt wird
-        let path = this.IMAGES_HEALTHBAR[this.resolveImageIndex()];
+        let path = ImgHub.IMAGES_HEALTHBAR_PEPE[this.resolveImageIndex()];
         this.img = this.imageCache[path];
-    }
+    };
 
     //Ermittlung des Index der IMAGES
     resolveImageIndex(){
@@ -43,6 +35,6 @@ class Healthbar extends DrawableObject{
         } else {
             return 0;
         }
-    }
+    };
     //#endregion
 }

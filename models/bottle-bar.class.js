@@ -11,14 +11,14 @@ class BottleBar extends DrawableObject{
         super();
         this.loadImages(ImgHub.IMAGES_BOTTLEBAR);
         this.setPercentage(0);
-    }
+    };
 
     //#region methods
     setPercentage(percentage){
         this.percentage = percentage; // index der IMAGES 0 bis 5 ermitteln, damit das richtige IMAGE (Bottleanzeige) angezeigt wird
         let path = ImgHub.IMAGES_BOTTLEBAR[this.resolveImageIndex()];
         this.img = this.imageCache[path];
-    }
+    };
 
     //Ermittlung des Index der IMAGES
     resolveImageIndex(){
@@ -35,14 +35,14 @@ class BottleBar extends DrawableObject{
         } else {
             return 0;
         }
-    }
+    };
 
     collect(){
         this.percentage += 20;
-    }
+    };
 
     bottleUsed(){
         this.percentage -= 20;
-    }
+    };
     //#endregion
 }
