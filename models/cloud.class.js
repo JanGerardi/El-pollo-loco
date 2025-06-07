@@ -6,15 +6,8 @@ class Cloud extends MovableObject{
     height = 250;
     //#endregion
     
-    constructor(){
-        super().loadImage("img/5_background/layers/4_clouds/1.png")
-        this.x = Math.random() * 700; // zwischen 0px und 700px;
-        this.animate();
+    constructor(imagePath, x){
+        super().loadImage(imagePath)
+        this.x = x;
     };
-
-    //#region methods
-    animate(){
-        this.moveLeft();
-    };
-    //#endregion
 }

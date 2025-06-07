@@ -12,7 +12,9 @@ class Level{
         new Endboss()
     ];
     clouds = [
-        new Cloud()
+        new Cloud("img/5_background/layers/4_clouds/1.png", 700),
+        new Cloud("img/5_background/layers/4_clouds/1.png", 1400),
+        new Cloud("img/5_background/layers/4_clouds/1.png", 2200)
     ];
     backgroundObjects = [
         new BackgroundObject("img/5_background/layers/air.png", -719),
