@@ -188,14 +188,15 @@ class SoundHub{
     static endbossWalking = new Audio("audio/endboss_walking.mp3");
     static endbossAggro = new Audio("audio/endboss_aggro.mp3");
     static endbossHurt = new Audio("audio/endboss_hurt.mp3");
+    static themeMusic = new Audio("audio/theme_song.mp3");
 
     static allSounds = [SoundHub.characterWalkingRight, SoundHub.characterWalkingLeft, SoundHub.characterJumping, SoundHub.throwingBottle, SoundHub.bottleSplashed,
         SoundHub.pepeHurt, SoundHub.coinCollected, SoundHub.bottleCollected, SoundHub.pepeSleeping, SoundHub.chickenDead, SoundHub.endbossWalking,
         SoundHub.endbossAggro, SoundHub.endbossHurt
     ];
 
-    static playSound(sound){
-        sound.volume = 0.2; // Setzt die Lautstärke auf 0.2 = 20% / 1 = 100%
+    static playSound(sound, volume = 0.2){
+        sound.volume = volume; // Setzt die Lautstärke auf 0.2 = 20% / 1 = 100%
         sound.currentTime = 0; // Startet den Sound von Anfang
         sound.play();
     };

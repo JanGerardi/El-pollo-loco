@@ -99,7 +99,7 @@ class World{
         enemy.hit();
         this.character.jump();
         SoundHub.playSound(SoundHub.characterJumping);
-        SoundHub.playSound(SoundHub.chickenDead);
+        SoundHub.playSound(SoundHub.chickenDead, 0.1);
     };
 
     enemyDealsDamageToCharacter(){
@@ -117,8 +117,8 @@ class World{
                     if (!bottle.hit) {
                         bottle.hit = true;
                         bottle.currentImage = 0; // splashImageIndex auf 0 setzen, damit die animation immer von Anfang abgespeilt wird
-                        SoundHub.playSound(SoundHub.bottleSplashed);
-                        SoundHub.playSound(SoundHub.chickenDead);
+                        SoundHub.playSound(SoundHub.bottleSplashed, 0.1);
+                        SoundHub.playSound(SoundHub.chickenDead, 0.1);
                     }
                     enemy.hit();
                 }
@@ -181,7 +181,7 @@ class World{
     bottleSplash(bottle){
         bottle.hit = true;
         bottle.currentImage = 0; // splashImageIndex auf 0 setzen, damit die animation immer von Anfang abgespeilt wird
-        SoundHub.playSound(SoundHub.bottleSplashed);
+        SoundHub.playSound(SoundHub.bottleSplashed, 0.1);
         SoundHub.playSound(SoundHub.endbossHurt);
     };
 

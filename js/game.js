@@ -18,6 +18,10 @@ function init(){
 
 function showControlls(){
     document.getElementById("startOverlay").style.display = "none";
+    if (SoundHub.themeMusic.paused) {
+        SoundHub.themeMusic.volume = 0.01;
+        SoundHub.playSound(SoundHub.themeMusic, 0.05);
+    }
 }
 
 function backToMainScreen(){

@@ -56,7 +56,7 @@ class Character extends MovableObject{
     pepeIsSleeping(images){
         if (this.sleeping && images === ImgHub.PEPE.IMAGES_LONG_IDLE) {
             if (SoundHub.pepeSleeping.paused) {
-                SoundHub.playSound(SoundHub.pepeSleeping);
+                SoundHub.playSound(SoundHub.pepeSleeping, 0.1);
             }
         } else{
             SoundHub.stopSound(SoundHub.pepeSleeping);
@@ -69,7 +69,7 @@ class Character extends MovableObject{
         SoundHub.characterWalkingRight.playbackRate = 2.0;  // doppelte Sound-Geschwindigkeit
         if (!this.isAboveGround()) {
             if (SoundHub.characterWalkingRight.paused) {
-                SoundHub.playSound(SoundHub.characterWalkingRight);
+                SoundHub.playSound(SoundHub.characterWalkingRight, 0.3);
             }
         } else {
             SoundHub.stopSound(SoundHub.characterWalkingRight);
@@ -82,7 +82,7 @@ class Character extends MovableObject{
         SoundHub.characterWalkingLeft.playbackRate = 2.0;
         if (!this.isAboveGround()) {
             if (SoundHub.characterWalkingLeft.paused) {
-                SoundHub.playSound(SoundHub.characterWalkingLeft);
+                SoundHub.playSound(SoundHub.characterWalkingLeft, 0.3);
             }
         } else {
             SoundHub.stopSound(SoundHub.characterWalkingLeft);

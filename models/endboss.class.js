@@ -43,10 +43,10 @@ class Endboss extends MovableObject{
         this.moveLeft();
         if (SoundHub.endbossWalking.paused) {
             SoundHub.endbossWalking.playbackRate = 2.5;
-            SoundHub.playSound(SoundHub.endbossWalking);
+            SoundHub.playSound(SoundHub.endbossWalking, 0.3);
         }
         if (SoundHub.endbossAggro.paused) {
-        SoundHub.playSound(SoundHub.endbossAggro);
+        SoundHub.playSound(SoundHub.endbossAggro, 0.3);
         }
     };
 
@@ -70,10 +70,13 @@ class Endboss extends MovableObject{
 
     addWinSequenz(){
         this.playAnimation(ImgHub.ENDBOSS.IMAGES_DEAD);
+        if (SoundHub.chickenDead.paused) {
+        SoundHub.playSound(SoundHub.chickenDead, 0.1);
+        }
         setTimeout(() => {
             winOverlay();
             gameover = true;
-        }, 700);
+        }, 500);
     };
     //#endregion
 }
