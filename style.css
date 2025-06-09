@@ -85,11 +85,16 @@ canvas{
 }
 
 #moveButtons{
+    display: none;
     position: absolute;
     z-index: 97;
     left: 40px;
     bottom: 2px;
     gap: 10px;
+
+    @media (max-width: 1024px){
+        display: flex;
+    }
 
     button{
         padding: 10px;
@@ -105,10 +110,15 @@ canvas{
 }
 
 #actionButtons{
+    display: none;
     position: absolute;
     z-index: 97;
     right: 40px;
     bottom: 2px;
+
+    @media (max-width: 1024px){
+        display: flex;
+    }
 
     button{
         padding: 10px;
@@ -125,21 +135,18 @@ canvas{
 
 #startOverlay{
     position: absolute;
-    width: 720px;
-    height: 480px;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("img/9_intro_outro_screens/start/startscreen_1.png");
     background-position: center;
-    background-size: 100% 100%;
+    background-size: cover;
     display: flex;
     align-items: center;
     z-index: 100;
 
     @media (max-width: 932px){
         width: 100%;
-    }
-
-    @media (max-height: 480px){
-        height: 100vh;
     }
 
     #controllsButton{
@@ -180,8 +187,9 @@ canvas{
 
 #controllsOverlay{
     position: absolute;
-    width: 720px;
-    height: 480px;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("img/5_background/background_img.png");
     background-position: center;
     background-size: 100% 100%;
@@ -195,10 +203,6 @@ canvas{
         width: 100%;
     }
 
-    @media (max-height: 480px){
-        height: 100vh;
-    }
-
     #startButton{
         font-size: 1.5rem;
         padding: 5px;
@@ -207,14 +211,6 @@ canvas{
         border-radius: 10px;
         cursor: pointer;
 
-        @media (max-width: 932px){
-            margin-bottom: 20px;
-        }
-
-        @media (max-height: 480px){
-            margin-bottom: 20px;
-        }
-
         &&:hover{
             background-color: rgb(255, 181, 44);
             color: black;
@@ -222,16 +218,8 @@ canvas{
     }
 
     h2{
-        margin: 30px;
+        margin-bottom: 30px;
         font-size: 2rem;
-
-        @media (max-width: 932px){
-            display: none;
-        }
-
-        @media (max-height: 480px){
-            display: none;
-        }
     }
 
     #controllsTable{
@@ -239,18 +227,12 @@ canvas{
         display: flex;
         align-items: center;
 
-        @media (max-width: 932px){
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        @media (max-height: 480px){
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
         td{
             padding: 10px;
+
+            @media (max-width: 550px){
+            padding: 5px;
+        }
 
             span{
                 font-size: 1.5rem;
@@ -267,8 +249,9 @@ canvas{
 
 #winOverlay{
     position: absolute;
-    width: 720px;
-    height: 480px;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("img/You won, you lost/You win B.png");
     background-color: black;
     background-position: center;
@@ -279,10 +262,6 @@ canvas{
 
     @media (max-width: 932px){
         width: 100%;
-    }
-
-    @media (max-height: 480px){
-        height: 100vh;
     }
 
     #restartGameButton{
@@ -324,8 +303,9 @@ canvas{
 
 #loseOverlay{
     position: absolute;
-    width: 720px;
-    height: 480px;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("img/You won, you lost/You lost b.png");
     background-color: black;
     background-position: center;
@@ -336,10 +316,6 @@ canvas{
 
     @media (max-width: 932px){
         width: 100%;
-    }
-
-    @media (max-height: 480px){
-        height: 100vh;
     }
 
     #restartGameButton{

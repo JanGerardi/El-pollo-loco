@@ -220,8 +220,18 @@ class SoundHub{
             sound.muted = this.isMuted;
         });
         this.themeMusic.muted = this.isMuted;
+        localStorage.setItem("soundMuted", this.isMuted)
         const muteBtn = document.getElementById("muteButton");
         muteBtn.innerText = this.isMuted ? "🔇" : "🔊";
+    }
+
+    static setSoundFromLocalStorage(){
+        this.isMuted = localStorage.getItem("soundMuted") === "true";
+
+        [...this.allSounds, this.themeMusic].forEach(sound => sound.muted = this.isMuted);
+
+        const btn = document.getElementById("muteButton");
+        if (btn) btn.innerText = this.isMuted ? "🔇" : "🔊";
     }
 }
 

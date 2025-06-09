@@ -160,4 +160,8 @@ window.onload = () => {
         dWasReleased = true;
     });
 };
+
+window.addEventListener("DOMContentLoaded", () => {
+    SoundHub.setSoundFromLocalStorage();
+});
 //#endregion
