@@ -192,7 +192,7 @@ class SoundHub{
 
     static allSounds = [SoundHub.characterWalkingRight, SoundHub.characterWalkingLeft, SoundHub.characterJumping, SoundHub.throwingBottle, SoundHub.bottleSplashed,
         SoundHub.pepeHurt, SoundHub.coinCollected, SoundHub.bottleCollected, SoundHub.pepeSleeping, SoundHub.chickenDead, SoundHub.endbossWalking,
-        SoundHub.endbossAggro, SoundHub.endbossHurt, SoundHub.themeMusic
+        SoundHub.endbossAggro, SoundHub.endbossHurt
     ];
 
     static isMuted = false;
@@ -219,6 +219,7 @@ class SoundHub{
         this.allSounds.forEach(sound =>{
             sound.muted = this.isMuted;
         });
+        this.themeMusic.muted = this.isMuted;
         const muteBtn = document.getElementById("muteButton");
         muteBtn.innerText = this.isMuted ? "🔇" : "🔊";
     }

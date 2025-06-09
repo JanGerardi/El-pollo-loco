@@ -84,6 +84,45 @@ canvas{
     cursor: pointer;
 }
 
+#moveButtons{
+    position: absolute;
+    z-index: 97;
+    left: 40px;
+    bottom: 2px;
+    gap: 10px;
+
+    button{
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 5px;
+        font-size: 1.5rem;
+        background-color: rgb(255, 165, 0, 0.5);
+        color: white;
+        border-radius: 15px;
+        border: none;
+    }
+}
+
+#actionButtons{
+    position: absolute;
+    z-index: 97;
+    right: 40px;
+    bottom: 2px;
+
+    button{
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 5px;
+        font-size: 1.5rem;
+        background-color: rgb(255, 165, 0, 0.5);
+        color: white;
+        border-radius: 15px;
+        border: none;
+    }
+}
+
 #startOverlay{
     position: absolute;
     width: 720px;
@@ -293,7 +332,7 @@ canvas{
     background-repeat: no-repeat;
     background-size: 100%;
     display: flex;
-    z-index: 97;
+    z-index: 98;
 
     @media (max-width: 932px){
         width: 100%;

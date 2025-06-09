@@ -14,15 +14,15 @@ function init(){
     document.getElementById("loseOverlay").style.display = "none";
     canvas = document.getElementById("canvas");
     world  = new World(canvas, keyboard);
-}
-
-function showControlls(){
-    document.getElementById("startOverlay").style.display = "none";
     if (SoundHub.themeMusic.paused) {
         SoundHub.themeMusic.volume = 0.01;
         SoundHub.themeMusic.loop = true;
         SoundHub.playSound(SoundHub.themeMusic, 0.05);
     }
+}
+
+function showControlls(){
+    document.getElementById("startOverlay").style.display = "none";
 }
 
 function backToMainScreen(){
@@ -86,4 +86,78 @@ window.addEventListener("keyup", (event) => {  //Keyboard-Event wird ermittelt "
         keyboard.D = false;
     }
 });
+
+// Keyboard-Event responsive
+window.onload = () => {
+    document.getElementById("muteButton").addEventListener("touchstart", (e) => {
+        e.preventDefault(); // verhindert Doppelausführung
+        SoundHub.toggleMute();
+    });
+
+    document.getElementById("controllsButton").addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        showControlls();
+    });
+
+    document.getElementById("startButton").addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        init();
+    });
+
+    document.querySelectorAll("#backToMainScreenButton").forEach(btn => {
+        btn.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            backToMainScreen();
+        });
+    });
+
+    document.querySelectorAll("#restartGameButton").forEach(btn => {
+        btn.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            init();
+        });
+    });
+    
+    document.getElementById("touchWalkLeftButton").addEventListener("touchstart", (e) =>{
+        e.preventDefault();
+        keyboard.LEFT = true;
+    });
+
+    document.getElementById("touchWalkRightButton").addEventListener("touchstart", (e) =>{
+        e.preventDefault();
+        keyboard.RIGHT = true;
+    });
+
+    document.getElementById("touchJumpButton").addEventListener("touchstart", (e) =>{
+        e.preventDefault();
+        keyboard.SPACE = true;
+    });
+
+    document.getElementById("touchThrowBottleButton").addEventListener("touchstart", (e) =>{
+        e.preventDefault();
+        keyboard.D = true;
+        dWasReleased = false;
+    });
+
+    document.getElementById("touchWalkLeftButton").addEventListener("touchend", (e) =>{
+        e.preventDefault();
+        keyboard.LEFT = false;
+    });
+
+    document.getElementById("touchWalkRightButton").addEventListener("touchend", (e) =>{
+        e.preventDefault();
+        keyboard.RIGHT = false;
+    });
+
+    document.getElementById("touchJumpButton").addEventListener("touchend", (e) =>{
+        e.preventDefault();
+        keyboard.SPACE = false;
+    });
+
+    document.getElementById("touchThrowBottleButton").addEventListener("touchend", (e) =>{
+        e.preventDefault();
+        keyboard.D = false;
+        dWasReleased = true;
+    });
+};
 //#endregion
