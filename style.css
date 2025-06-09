@@ -40,6 +40,7 @@ canvas{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     z-index: 100;
     top: 190px;
 
@@ -56,6 +57,17 @@ canvas{
         &&:hover{
             background-color: rgb(160, 104, 0);
             color: black;
+        }
+    }
+
+    #impressum{
+        color: white;
+        text-decoration: underline;
+        font-size: 0.8rem;
+        top: 190px;
+
+        &&:hover{
+            color: orange;
         }
     }
 }

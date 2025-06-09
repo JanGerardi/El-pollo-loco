@@ -20,6 +20,7 @@ function showControlls(){
     document.getElementById("startOverlay").style.display = "none";
     if (SoundHub.themeMusic.paused) {
         SoundHub.themeMusic.volume = 0.01;
+        SoundHub.themeMusic.loop = true;
         SoundHub.playSound(SoundHub.themeMusic, 0.05);
     }
 }
