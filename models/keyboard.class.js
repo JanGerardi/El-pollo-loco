@@ -4,5 +4,6 @@ class Keyboard{
     RIGHT = false;
     SPACE = false;
     D = false;
+    MUTE = false
     //#endregion
 }

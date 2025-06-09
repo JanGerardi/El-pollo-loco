@@ -30,6 +30,7 @@
 <body>
     <h1>El pollo loco</h1>
     <canvas id="canvas" width="720" height="480"></canvas>
+    <button id="muteButton" onclick="SoundHub.toggleMute(); this.blur();">🔊</button>
     <div id="startOverlay">
         <button onclick="showControlls()" id="controllsButton">Let's Go Loco</button>
         <a id="impressum" href="impressum.html">Impressum</a>
@@ -52,6 +53,10 @@
             <tr>
                 <td><button>D</button></td>
                 <td><span>Throw Bottle</span></td>
+            </tr>
+            <tr>
+                <td><button>M</button></td>
+                <td><span>Mute/Activate Sound</span></td>
             </tr>
         </table>
         <button onclick="init()" id="startButton">Start</button>

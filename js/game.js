@@ -53,8 +53,9 @@ window.addEventListener("keydown", (event) => {  //Keyboard-Event wird ermittelt
     if (event.keyCode == 37) {
         keyboard.LEFT = true;
     }
-    if (event.keyCode == 38) {
-        keyboard.UP = true;
+    if (event.keyCode == 77) {
+        keyboard.MUTE = true;
+        SoundHub.toggleMute();
     }
     if (event.keyCode == 32) {
         keyboard.SPACE = true;
@@ -74,8 +75,8 @@ window.addEventListener("keyup", (event) => {  //Keyboard-Event wird ermittelt "
     if (event.keyCode == 37) {
         keyboard.LEFT = false;
     }
-    if (event.keyCode == 38) {
-        keyboard.UP = false;
+    if (event.keyCode == 77) {
+        keyboard.MUTE = false;
     }
     if (event.keyCode == 32) {
         keyboard.SPACE = false;

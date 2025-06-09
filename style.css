@@ -30,6 +30,18 @@ canvas{
     top: 190px;
 }
 
+#muteButton{
+    top: 150px;
+    left: 320px;
+    z-index: 101;
+    padding: 5px;
+    color: white;
+    background-color: orange;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 #startOverlay{
     position: absolute;
     width: 720px;
@@ -102,7 +114,7 @@ canvas{
     }
 
     h2{
-        margin: 40px;
+        margin: 30px;
         font-size: 2rem;
     }
 
@@ -110,7 +122,7 @@ canvas{
         flex-direction: column;
         display: flex;
         align-items: center;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
 
         td{
             padding: 10px;
@@ -150,7 +162,7 @@ canvas{
         color: white;
         background-color: orange;
         border: none;
-        border-radius: 10px;
+        border-radius: 8px;
         cursor: pointer;
 
         &&:hover{

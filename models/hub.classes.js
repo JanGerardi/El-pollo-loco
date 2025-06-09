@@ -192,8 +192,10 @@ class SoundHub{
 
     static allSounds = [SoundHub.characterWalkingRight, SoundHub.characterWalkingLeft, SoundHub.characterJumping, SoundHub.throwingBottle, SoundHub.bottleSplashed,
         SoundHub.pepeHurt, SoundHub.coinCollected, SoundHub.bottleCollected, SoundHub.pepeSleeping, SoundHub.chickenDead, SoundHub.endbossWalking,
-        SoundHub.endbossAggro, SoundHub.endbossHurt
+        SoundHub.endbossAggro, SoundHub.endbossHurt, SoundHub.themeMusic
     ];
+
+    static isMuted = false;
 
     static playSound(sound, volume = 0.2){
         sound.volume = volume; // Setzt die Lautstärke auf 0.2 = 20% / 1 = 100%
@@ -211,6 +213,15 @@ class SoundHub{
         });
         // document.getElementById('volume').value = 0.2;
     };
+
+    static toggleMute(){
+        this.isMuted = !this.isMuted;
+        this.allSounds.forEach(sound =>{
+            sound.muted = this.isMuted;
+        });
+        const muteBtn = document.getElementById("muteButton");
+        muteBtn.innerText = this.isMuted ? "🔇" : "🔊";
+    }
 }
 
 class IntervalHub{
