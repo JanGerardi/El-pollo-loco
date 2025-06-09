@@ -28,46 +28,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Gorditas&display=swap" rel="stylesheet">
     <title>El pollo loco</title>
 <body>
-    <h1>El pollo loco</h1>
-    <canvas id="canvas" width="720" height="480"></canvas>
-    <button id="muteButton" onclick="SoundHub.toggleMute(); this.blur();">🔊</button>
-    <div id="startOverlay">
-        <button onclick="showControlls()" id="controllsButton">Let's Go Loco</button>
-        <a id="impressum" href="impressum.html">Impressum</a>
-    </div>
-    <div id="controllsOverlay">
-        <h2>El pollo loco</h2>
-        <table id="controllsTable">
-            <tr>
-                <td><button>&#129106;</button></td>
-                <td><span>Walk Right</span></td>
-            </tr>
-            <tr>
-                <td><button>&#129104;</button></td>
-                <td><span>Walk Left</span></td>
-            </tr>
-            <tr>
-                <td><button>Space</button></td>
-                <td><span>Jump</span></td>
-            </tr>
-            <tr>
-                <td><button>D</button></td>
-                <td><span>Throw Bottle</span></td>
-            </tr>
-            <tr>
-                <td><button>M</button></td>
-                <td><span>Mute/Activate Sound</span></td>
-            </tr>
-        </table>
-        <button onclick="init()" id="startButton">Start</button>
-    </div>
-    <div id="winOverlay">
-        <button onclick="backToMainScreen()" id="backToMainScreenButton">Main Menu</button>
-        <button onclick="init()" id="restartGameButton">Try Again</button>
-    </div>
-    <div id="loseOverlay">
-        <button onclick="backToMainScreen()" id="backToMainScreenButton">Main Menu</button>
-        <button onclick="init()" id="restartGameButton">Try Again</button>
+    <div id="contentarea">
+        <h1>El pollo loco</h1>
+        <div id="canvasarea">
+            <canvas id="canvas" width="720" height="480"></canvas>
+            <button id="muteButton" onclick="SoundHub.toggleMute(); this.blur();">🔊</button>
+            <div id="startOverlay">
+                <button onclick="showControlls()" id="controllsButton">Let's Go Loco</button>
+                <a id="impressum" href="impressum.html">Impressum</a>
+            </div>
+            <div id="controllsOverlay">
+                <h2>El pollo loco</h2>
+                <table id="controllsTable">
+                    <tr>
+                        <td><button>&#129106;</button></td>
+                        <td><span>Walk Right</span></td>
+                    </tr>
+                    <tr>
+                        <td><button>&#129104;</button></td>
+                        <td><span>Walk Left</span></td>
+                    </tr>
+                    <tr>
+                        <td><button>Space</button></td>
+                        <td><span>Jump</span></td>
+                    </tr>
+                    <tr>
+                        <td><button>D</button></td>
+                        <td><span>Throw Bottle</span></td>
+                    </tr>
+                    <tr>
+                        <td><button>M</button></td>
+                        <td><span>Mute/Activate Sound</span></td>
+                    </tr>
+                </table>
+                <button onclick="init()" id="startButton">Start</button>
+            </div>
+            <div id="winOverlay">
+                <button onclick="backToMainScreen()" id="backToMainScreenButton">Main Menu</button>
+                <button onclick="init()" id="restartGameButton">Try Again</button>
+            </div>
+            <div id="loseOverlay">
+                <button onclick="backToMainScreen()" id="backToMainScreenButton">Main Menu</button>
+                <button onclick="init()" id="restartGameButton">Try Again</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

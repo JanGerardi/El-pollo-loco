@@ -1,7 +1,7 @@
 class HealthbarEndboss extends DrawableObject{
     //#region attributes
     x = 470;
-    y = 5;
+    y = 25;
     width = 0;
     height = 0;
     percentage = 300;
