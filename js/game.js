@@ -44,6 +44,21 @@ function winOverlay(){
     IntervalHub.stopAllIntervals();
 }
 
+function checkDeviceOrientation(){
+    const isMobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isMobileViewport = window.matchMedia("(max-width: 1024px)").matches;
+    const isMobile = isMobileUserAgent || isMobileViewport;
+    if (isMobile && window.innerHeight > window.innerWidth) { // Hochformat auf Mobile
+        document.getElementById("rotateOverlay").style.display = "flex";
+        document.getElementById("moveButtons").style.display = "flex";
+        document.getElementById("actionButtons").style.display = "flex";
+    } else {
+        document.getElementById("rotateOverlay").style.display = "none";
+        document.getElementById("moveButtons").style.display = "none";
+        document.getElementById("actionButtons").style.display = "none";
+    }
+}
+
 // Keyboard-Event Taste gedrückt
 window.addEventListener("keydown", (event) => {  //Keyboard-Event wird ermittelt "keydown" und geben den parameter event
 
@@ -161,7 +176,14 @@ window.onload = () => {
     });
 };
 
+// Bei Start prüfen
+window.addEventListener("load", checkDeviceOrientation);
+
 window.addEventListener("DOMContentLoaded", () => {
     SoundHub.setSoundFromLocalStorage();
 });
+
+// Bei Größenänderung prüfen
+window.addEventListener("resize", checkDeviceOrientation);
+window.addEventListener("orientationchange", checkDeviceOrientation);
 //#endregion

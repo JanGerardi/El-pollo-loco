@@ -20,6 +20,20 @@ body{
     height: 100vh;
 }
 
+#rotateOverlay{
+    /* display: none; */
+    background-color: black;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 200;
+    position: fixed;
+    inset: 0;
+}
+
 h1{
     font-size: 3rem;
     margin-bottom: 40px;
@@ -92,10 +106,6 @@ canvas{
     bottom: 2px;
     gap: 10px;
 
-    @media (max-width: 1024px){
-        display: flex;
-    }
-
     button{
         padding: 10px;
         padding-left: 20px;
@@ -115,10 +125,6 @@ canvas{
     z-index: 97;
     right: 40px;
     bottom: 2px;
-
-    @media (max-width: 1024px){
-        display: flex;
-    }
 
     button{
         padding: 10px;
@@ -182,8 +188,6 @@ canvas{
         }
     }
 }
-
-
 
 #controllsOverlay{
     position: absolute;
